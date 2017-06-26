@@ -50,7 +50,7 @@ contract test{
         p.status = "To be approved " ;
         counter[policyId] = 0 ;
         
-        LOG_PolicyApplied(policyId , this , reference_id , p.premium , p.timeStamp, p.status);
+        LOG_PolicyApplied(policyId , this , reference_id , p.premium , p.timeStamp,p.status);
         
         return true ; 
         
@@ -59,8 +59,6 @@ contract test{
 	}
     // uint k  = 100 ;
 	function counters(uint _policyId) returns (string) {
-
-		
 		counter[_policyId] = counter[_policyId]+  1; 
 		policy x = policies[_policyId] ;
 
@@ -68,6 +66,13 @@ contract test{
 			x.status = "approved";
 		} 
 
+		return x.status ;
+	}
+	
+	
+	function status (uint _policyId) constant returns (string) {
+		
+		policy x = policies[_policyId] ;
 		return x.status ;
 	}
 
