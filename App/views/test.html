@@ -50,11 +50,17 @@
             <input type="text" id="carrier" placeholder="Insurer"/>
             <input type="text" id="premium" placeholder="Premium"/><br><br>
             <a href="#" onclick="newRequest()" class="btn btn-primary" id= "button">Submit</a>
-            <br><br>
-            <div class="col-md-12 " ><hr style="width: 100%; color: black; height: 1px; background-color:black"></div>
-            <!-- <input id="upload-input" type="file" name="uploads[]" multiple="multiple"></br><br> --> 
-            <h2 style="color: black "> Dashboard for Reinsurer to validate policy </h2>
-            <br>
+
+            </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 policy">
+        <div class="panel panel-default">
+          <div class="panel-body">
+          <h2 style="color: black "> Dashboard for Reinsurer to validate policy </h2>
+          <br>
+            <!-- <input id="upload-input" type="file" name="uploads[]" multiple="multiple"> -->
             <input type="text" id="policyId" placeholder="Policy ID" />
             <input type="text" id="voterId" placeholder="Voter ID" />
             <a href="#" onclick="votePolicy()" class="btn btn-primary" id= "button">Vote</a><br>
@@ -74,22 +80,23 @@
             <input type="text" id="premium" placeholder="Premium"/>
             <br><br>
             <a href="#" onclick="newClaim()" class="btn btn-primary" id= "button">Submit</a>
-            <!-- <input id="upload-input" type="file" name="uploads[]" multiple="multiple"></br><br> --> 
-            <br><br>
-            <div class="col-md-12 " ><hr style="width: 100%; color: black; height: 1px; background-color:black"></div>
-            <h2 style="color: black "> Dashboard for Reinsurer to validate Claim </h2>
-            <br>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-6 claim">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <!-- <input id="upload-input" type="file" name="uploads[]" multiple="multiple"></br><br>  -->
+          <h2 style="color: black "> Dashboard for Reinsurer to validate Claim </h2>
+          <br>
             <input type="text" id="claimId" placeholder="Claim ID" />
             <input type="text" id="voterId" placeholder="Voter ID" />
             <a href="#" onclick="voteClaim()" class="btn btn-primary" id= "button">Vote</a><br>
             <br>
             <input type="text" id="claimId1" placeholder="Claim ID" />
             <a href="#" onclick="statusClaim()" class="btn btn-primary" id= "button">Get Status</a>
+          </div>
         </div>
-        </div>
-        <!-- <div >
-            <a href="javascripts/claim.html"  class="btn btn-primary" id= "button">Claim</a>
-        </div> -->
       </div>
     </div>
   </div>

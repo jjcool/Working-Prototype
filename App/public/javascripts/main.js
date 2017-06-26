@@ -41,7 +41,7 @@ txFilter.watch(function(err , result){
 	if(count == 0) {
 	console.log(Jayesh);
 	console.log(polciyID);
-	$('<br><div class = "panel" > <h2> reference id ' + ref_id + "</h2><br> carrier: "+ carrier +"<br> premium: " + premium +"<br> Status: " + Jayesh + "<br> polciyID: "+polciyID+"</div>").appendTo('.something');
+	$('<br><div class = "panel" > <h2> reference id ' + ref_id + "</h2><br> carrier: "+ carrier +"<br> premium: " + premium +"<br> Status: " + Jayesh + "<br> polciyID: "+polciyID+"</div>").appendTo('.policy');
 
 	count ++ ;
 }
@@ -78,7 +78,7 @@ contractInstance.new_claim(address,id,premium , {from: web3.eth.accounts[0] , ga
     let div_id = candidates[candidateName];
     $("#" + div_id).html(contractInstance.totalVotesFor.call(candidateName).toString());
   }*/;
-
+$('<br><div class = "panel" > <h2> reference id ' + address + "</h2><br> carrier: "+ id +"<br> premium: " + premium +"</div>").appendTo('.claim');
 //$('#table').append('<tr><th text = "ref_id"></th><td>more data</td><td>mosre data</td></tr>');
 
 console.log("Claim made");
@@ -102,6 +102,7 @@ function voteClaim(claimId, voterId){
 function statusClaim(claimId1){
 	claimId1 = $('#claimId1').val();
 	if(contractInstance.statusClaim(claimId1) == "approved") {
+		console.log("Status:" + contractInstance.statusClaim(claimId1))
 		console.log(web3.eth.getBalance(web3.eth.accounts[1]).toNumber(),"ether");
 		web3.eth.sendTransaction({from:web3.eth.coinbase, to:web3.eth.accounts[1], value: web3.toWei(0.005, "ether")});
 		console.log("money sent");
