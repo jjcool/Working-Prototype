@@ -1,0 +1,3 @@
+In case of error see following things :
+
+abi , contract address , testrpc is unlocked .

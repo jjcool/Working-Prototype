@@ -18,7 +18,8 @@ contract test{
 	 	address customer,
 	 	string referenceId,
 	 	uint premium,
-	 	uint timeStamp
+	 	uint timeStamp,
+	 	string status
 	    );
 
 	struct policy{
@@ -49,7 +50,7 @@ contract test{
         p.status = "To be approved " ;
         counter[policyId] = 0 ;
         
-        LOG_PolicyApplied(policyId , this , reference_id , p.premium , p.timeStamp);
+        LOG_PolicyApplied(policyId , this , reference_id , p.premium , p.timeStamp, p.status);
         
         return true ; 
         
