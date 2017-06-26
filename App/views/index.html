@@ -54,10 +54,10 @@
 
             <input type="text" id="policyId" placeholder="Policy ID" />
             <input type="text" id="voterId" placeholder="Voter ID" />
-            <a href="#" onclick="vote()" class="btn btn-primary" id= "button">Vote</a><br>
+            <a href="#" onclick="votePolicy()" class="btn btn-primary" id= "button">Vote</a><br>
             <br>
             <input type="text" id="policyId1" placeholder="Policy ID" />
-            <a href="#" onclick="status()" class="btn btn-primary" id= "button">Get Status</a>
+            <a href="#" onclick="statusPolicy()" class="btn btn-primary" id= "button">Get Status</a>
         </div>
         </div>
         <!-- <div >
@@ -69,19 +69,19 @@
           <div class="panel-body">
           <h2 style="color: black "> Apply For Claim </h2>
           <br>
-            <input type="text" id="ref_id" placeholder="Reference ID" />
-            <input type="text" id="carrier" placeholder="Insurer"/>
+            <input type="text" id="address" placeholder="Address " />
+            <input type="text" id="id" placeholder="Id"/>
             <input type="text" id="premium" placeholder="Premium"/>
             <br><br>
-            <a href="#" onclick="newRequest()" class="btn btn-primary" id= "button">Submit</a>
+            <a href="#" onclick="newClaim()" class="btn btn-primary" id= "button">Submit</a>
             <input id="upload-input" type="file" name="uploads[]" multiple="multiple"></br><br> 
 
-            <input type="text" id="policyId" placeholder="Policy ID" />
+            <input type="text" id="claimId" placeholder="Claim ID" />
             <input type="text" id="voterId" placeholder="Voter ID" />
-            <a href="#" onclick="vote()" class="btn btn-primary" id= "button">Vote</a><br>
+            <a href="#" onclick="voteClaim()" class="btn btn-primary" id= "button">Vote</a><br>
             <br>
-            <input type="text" id="policyId1" placeholder="Policy ID" />
-            <a href="#" onclick="status()" class="btn btn-primary" id= "button">Get Status</a>
+            <input type="text" id="claimId1" placeholder="Claim ID" />
+            <a href="#" onclick="statusClaim()" class="btn btn-primary" id= "button">Get Status</a>
         </div>
         </div>
         <!-- <div >
