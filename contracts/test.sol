@@ -61,7 +61,7 @@ contract test{
         p.reference_id = reference_id ; 
         p.carrier = carrier ; 
         p.premium = premium ; 
-        p.status = "To be approved " ;
+        p.status = "Policy to be approved " ;
         counterPolicy[policyId] = 0 ;
         
         LOG_PolicyApplied(policyId , this , reference_id , p.premium , p.timeStamp,p.status);
@@ -82,7 +82,7 @@ contract test{
         p.timeStamp = now ;
         p.id = id ;
         p.premium = premium ; 
-        p.status = "To be approved" ;
+        p.status = "Claim to be approved" ;
         counterClaim[claimId] = 0 ;
         
         LOG_ClaimApplied(claimId ,p.customer,id , p.premium , p.timeStamp,p.status);
@@ -98,7 +98,7 @@ contract test{
 		policy x = policies[_policyId] ;
 
 		if (counterPolicy[_policyId]  > 3 ){
-			x.status = "approved";
+			x.status = "Policy approved";
 		} 
 
 		return x.status ;
@@ -109,7 +109,7 @@ contract test{
 		policy x = claims[_claimId] ;
 
 		if (counterClaim[_claimId]  > 3 ){
-			x.status = "approved";
+			x.status = "Claim approved";
 		} 
 
 		return x.status ;
