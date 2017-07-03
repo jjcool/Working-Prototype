@@ -1,5 +1,45 @@
 pragma solidity ^0.4.0 ;
 
+import "contracts/AIG.sol" ;
+import "contracts/BHSI.sol" ; 
+import "contracts/LIC.sol" ;
+
+// contract AIG {
+
+// 	function check(uint premium) constant returns (uint count){
+        
+//         if(premium < 50 ) count = 1 ;
+//         else count = 0 ;
+        
+//         return count ;
+        
+//     }
+// }
+
+// contract BHSI {
+
+// 	function check(uint premium) constant returns (uint count){
+        
+//         if(premium < 50 ) count = 1 ;
+//         else count = 0 ;
+        
+//         return count ;
+        
+//     } 
+// }
+
+// contract LIC {
+
+// 	function check(uint premium) constant returns (uint count){
+        
+//         if(premium < 50 ) count = 1 ;
+//         else count = 0 ;
+        
+//         return count ;
+        
+//     } 
+// }
+
 contract test{
 	
 	policy[] public policies;
@@ -128,6 +168,24 @@ contract test{
 		return x.status ;
 	}
 
+	function status(address AIGContractAddress, address BHSIContractAddress , address LICContractAddress , uint amount) returns (string) {
+		uint count = 0 ;
+		uint _policyId = policies.length - 1  ;
 
+		policy x = policies[_policyId] ;
+
+		AIG m = AIG(AIGContractAddress);
+		count = count +  m.check(amount);
+
+		BHSI n = BHSI(BHSIContractAddress);
+		count = count +  n.check(amount);
+		
+		LIC o = LIC(LICContractAddress);
+		count = count +  o.check(amount);
+
+		if (count > 1) x.status = "Policy approved" ;
+
+		return x.status ; 
+	}
 
 }

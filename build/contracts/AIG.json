@@ -1,0 +1,46 @@
+{
+  "contract_name": "AIG",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "premium",
+          "type": "uint256"
+        }
+      ],
+      "name": "check",
+      "outputs": [
+        {
+          "name": "count",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    }
+  ],
+  "unlinked_binary": "0x60606040523415600b57fe5b5b60898061001a6000396000f300606060405263ffffffff60e060020a6000350416635f72f45081146020575bfe5b3415602757fe5b60306004356042565b60408051918252519081900360200190f35b600060328210156053575060016057565b5060005b5b9190505600a165627a7a723058204bb291fdc81452e284d26b3cb22670a59e97cca0221a48523aa1f0c57251334c0029",
+  "networks": {
+    "1498803676833": {
+      "events": {},
+      "links": {},
+      "address": "0xa4f13cf0343686945c35c90bffdbf2c9bab8c215",
+      "updated_at": 1499064427147
+    },
+    "1499064646930": {
+      "events": {},
+      "links": {},
+      "address": "0x5797fa4fcc63e567294752025ea3898c5947986e",
+      "updated_at": 1499064656433
+    },
+    "1499065319713": {
+      "events": {},
+      "links": {},
+      "address": "0x8c6f9a10d92832e519fca928291e7feea87547a2",
+      "updated_at": 1499065926169
+    }
+  },
+  "schema_version": "0.0.5",
+  "updated_at": 1499065926169
+}
