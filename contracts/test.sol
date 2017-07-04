@@ -79,6 +79,9 @@ contract test{
 		string reference_id;
 		string carrier ; 
 		string doc_url;
+		uint AIG ;
+		uint BHSI ;
+		uint LIC ;
 		uint timeStamp;
 		uint premium ; 
 		string status ; 
@@ -102,6 +105,9 @@ contract test{
         p.carrier = carrier ; 
         p.premium = premium ; 
         p.status = "Policy to be approved " ;
+        p.AIG = 0 ;
+        p.BHSI = 0 ; 
+        p.LIC = 0 ;
         counterPolicy[policyId] = 0 ;
         
         LOG_PolicyApplied(policyId , this , reference_id , p.premium , p.timeStamp,p.status);
@@ -133,11 +139,32 @@ contract test{
 
 	}
     // uint k  = 100 ;
-	function counterPolicys(uint _policyId) returns (string) {
-		counterPolicy[_policyId] = counterPolicy[_policyId]+  1; 
+	function counterPolicys(uint _policyId , uint voterId) returns (string) {
+		//counterPolicy[_policyId] = counterPolicy[_policyId]+  1; 
 		policy x = policies[_policyId] ;
+		
+		if(voterId == 10 ){
+			if(x.AIG != 1 ) {
+				counterPolicy[_policyId] = counterPolicy[_policyId]+  1; 
+				x.AIG = 1 ;
+			}
+		}
 
-		if (counterPolicy[_policyId]  > 2 ){
+		if(voterId == 20 ){
+			if(x.BHSI != 1 ) {
+				counterPolicy[_policyId] = counterPolicy[_policyId]+  1; 
+				x.BHSI = 1 ;
+			}
+		}
+
+		if(voterId == 30 ){
+			if(x.LIC != 1 ) {
+				counterPolicy[_policyId] = counterPolicy[_policyId]+  1; 
+				x.LIC = 1 ;
+			}
+		}
+
+		if (counterPolicy[_policyId]  > 1 ){
 			x.status = "Policy approved";
 		} 
 
@@ -178,13 +205,17 @@ contract test{
 		AIG m = new AIG();
 		counterPolicy[_policyId] = counterPolicy[_policyId] +  m.check(amount);
 
+		if(m.check(amount) == 1 ) x.AIG = 1 ;
+
 		//BHSI n = BHSI(BHSIContractAddress);
 		BHSI n = new BHSI();
 		counterPolicy[_policyId] = counterPolicy[_policyId] +  n.check(amount);
+		if(n.check(amount) == 1 ) x.BHSI = 1 ;
 
 		//LIC o = LIC(LICContractAddress);
 		LIC o = new LIC();
 		counterPolicy[_policyId] = counterPolicy[_policyId] +  o.check(amount);
+		if(o.check(amount) == 1 ) x.LIC = 1 ;
 
 		if (counterPolicy[_policyId] > 1) x.status = "Policy approved" ;
 
