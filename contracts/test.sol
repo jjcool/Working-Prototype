@@ -1,44 +1,44 @@
 pragma solidity ^0.4.0 ;
 
-import "contracts/AIG.sol" ;
-import "contracts/BHSI.sol" ; 
-import "contracts/LIC.sol" ;
+// import "contracts/AIG.sol" ;
+// import "contracts/BHSI.sol" ; 
+// import "contracts/LIC.sol" ;
 
-// contract AIG {
+contract AIG {
 
-// 	function check(uint premium) constant returns (uint count){
+	function check(uint premium) constant returns (uint count){
         
-//         if(premium < 50 ) count = 1 ;
-//         else count = 0 ;
+        if(premium < 60 ) count = 1 ;
+        else count = 0 ;
         
-//         return count ;
+        return count ;
         
-//     }
-// }
+    }
+}
 
-// contract BHSI {
+contract BHSI {
 
-// 	function check(uint premium) constant returns (uint count){
+	function check(uint premium) constant returns (uint count){
         
-//         if(premium < 50 ) count = 1 ;
-//         else count = 0 ;
+        if(premium < 50 ) count = 1 ;
+        else count = 0 ;
         
-//         return count ;
+        return count ;
         
-//     } 
-// }
+    } 
+}
 
-// contract LIC {
+contract LIC {
 
-// 	function check(uint premium) constant returns (uint count){
+	function check(uint premium) constant returns (uint count){
         
-//         if(premium < 50 ) count = 1 ;
-//         else count = 0 ;
+        if(premium < 40 ) count = 1 ;
+        else count = 0 ;
         
-//         return count ;
+        return count ;
         
-//     } 
-// }
+    } 
+}
 
 contract test{
 	
@@ -137,7 +137,7 @@ contract test{
 		counterPolicy[_policyId] = counterPolicy[_policyId]+  1; 
 		policy x = policies[_policyId] ;
 
-		if (counterPolicy[_policyId]  > 3 ){
+		if (counterPolicy[_policyId]  > 2 ){
 			x.status = "Policy approved";
 		} 
 
@@ -168,24 +168,47 @@ contract test{
 		return x.status ;
 	}
 
-	function status(address AIGContractAddress, address BHSIContractAddress , address LICContractAddress , uint amount) returns (string) {
-		uint count = 0 ;
+	function status(/*address AIGContractAddress, address BHSIContractAddress , address LICContractAddress ,*/ uint amount) returns (string ) {
+		//uint count = 0 ;
 		uint _policyId = policies.length - 1  ;
 
 		policy x = policies[_policyId] ;
 
-		AIG m = AIG(AIGContractAddress);
-		count = count +  m.check(amount);
+		//AIG m = AIG(AIGContractAddress);
+		AIG m = new AIG();
+		counterPolicy[_policyId] = counterPolicy[_policyId] +  m.check(amount);
 
-		BHSI n = BHSI(BHSIContractAddress);
-		count = count +  n.check(amount);
-		
-		LIC o = LIC(LICContractAddress);
-		count = count +  o.check(amount);
+		//BHSI n = BHSI(BHSIContractAddress);
+		BHSI n = new BHSI();
+		counterPolicy[_policyId] = counterPolicy[_policyId] +  n.check(amount);
 
-		if (count > 1) x.status = "Policy approved" ;
+		//LIC o = LIC(LICContractAddress);
+		LIC o = new LIC();
+		counterPolicy[_policyId] = counterPolicy[_policyId] +  o.check(amount);
+
+		if (counterPolicy[_policyId] > 1) x.status = "Policy approved" ;
 
 		return x.status ; 
+	}
+
+	function premium(uint _policyId) constant returns (uint) { 
+
+		policy x = policies[_policyId] ; 
+
+		return x.premium ;
+
+
+	 }
+
+	function policyId() constant returns(uint){
+
+		uint _policyId = policies.length - 1 ;
+		return _policyId ;
+	}
+
+	function counterPolicy(uint _policyId) constant returns (uint){
+
+		return counterPolicy[_policyId] ;
 	}
 
 }
