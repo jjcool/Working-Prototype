@@ -160,7 +160,7 @@ contract test{
 
 	function new_claim(uint _policyId) returns(bool){
 		policy x = policies[_policyId] ;
-		if(keccak256(x.claimStatus) != keccak256("Applied for claim") && keccak256(x.status) == keccak256("Policy approved")){
+		//if(keccak256(x.claimStatus) != keccak256("Applied for claim") && keccak256(x.status) == keccak256("Policy approved")){
 				uint claimId = claims.length++;
 				customerClaims[this].push(claimId);
 				claimstruct y = claims[claimId];
@@ -177,13 +177,18 @@ contract test{
 		        counterClaim[claimId] = 0 ;
 		        x.claimStatus = "Applied for claim" ;
 		        statusValidation(claimId);
-		        stringReturn("Claim Added") ;
+		        //stringReturn("Claim Added") ;
 		        return true;
-			}
-		else {stringReturn("Already Applied for Claim or Policy not approved") ;}
-		return false ;
+		// 	//}
+		// //else {stringReturn("Already Applied for Claim or Policy not approved") ;}
+		// return false ;
 	}
 	
+	function claimChecker (uint _policyId) constant returns(uint){
+		policy x = policies[_policyId] ;
+		if(keccak256(x.claimStatus) != keccak256("Applied for claim") && keccak256(x.status) == keccak256("Policy approved")) return 1 ; 
+		else return 0 ; 
+	}
 	// function new_claim(address addresss, uint id, uint premium) returns (bool) {
 
 	// 	uint _policyId = claims.length++;

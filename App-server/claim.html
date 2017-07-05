@@ -120,22 +120,82 @@
 				</div>
 				
 			</nav>
-			<div class="jumbotron">
+	<div class="row jumbotron">
 
 				<h2 style="color: black "> Dashboard for Customer to apply for new claim </h2>
           <br>
-            <input type="text" id="claimId" placeholder="Policy ID"/><br><br>
+          <div class="col-md-6">
+          <h4> Apply From Claim Here </h4><br>
+            <input class = "form-control" type="text" id="claimId" placeholder="Policy ID"/><br>
             <a href="#" onclick="newClaim()" class="btn btn-primary" id= "button">Submit</a>
-            <br><br>
-
-            <input type="text" id="claimId1" placeholder="Policy ID"/><br><br>
-            <a href="#" onclick="statusClaim()" class="btn btn-primary" id= "button">Status</a>
-            <br><br>
+          </div>
+          <div class="col-md-6">
+            <h4 > Get Claim Status </h4><br>
+            <input  class = "form-control" type="text" id="claimId1" placeholder="Claim ID"/><br>
+            <a href="#" onclick="statusClaim()" class="btn btn-primary " id= "button">Status</a>
+            <br>
             <!-- <input type="text" id="policyId1" placeholder="Policy ID" />
             <a href="#" onclick="statusPolicy()" class="btn btn-primary" id= "button">Get Status</a>
 			</div> -->
 		</div>
 	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<h3 class="text-center">
+				Status of Applied Claims
+			</h3>
+			<a onclick="tableupdateclaim()" class="btn btn-primary ">Update</a>			
+			<table class="table table-bordered table-hover" id="claimTable" >
+				<thead>
+					<tr>
+						<th>
+							S No.
+						</th>
+						<th>
+							ClaimId
+						</th>
+						<th>
+							PolicyId
+						</th>
+						<th>
+							Reference ID
+						</th>
+						<th>
+							Vote Counted
+						<th>
+							Status
+						</th>
+					</tr>
+				</thead>
+				<tbody >
+					<tr>
+						<td>
+							1
+						</td>
+						<td>
+							TB - Monthly
+						</td>
+						<td>
+							test
+						</td>
+						<td>
+							test
+						</td>
+
+						<td>
+							01/04/2012
+						</td>
+						<td>
+							Default
+						</td>
+					</tr>
+					
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
 	<!-- <div class="row">
 		<div class="col-md-4">
 			<h2>
