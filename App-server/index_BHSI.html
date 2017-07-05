@@ -23,7 +23,7 @@
 					 
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-					</button> <a class="navbar-brand" href="index_BHSI.html">Insurer</a>
+					</button> <a class="navbar-brand" href="index_BHSI.html" id="voterId" >BHSI</a>
 				</div>
 				
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -125,12 +125,12 @@
 			<h3 class="text-center">
 				Status of Applied Policies
 			</h3>
-			<a onclick="tableupdate()" class="btn btn-primary ">Update</a><br><br>
-			<input type="text" id="policyId" placeholder="Policy ID" class="pull-left" /><br><br>
-            <!-- <input type="text" id="voterId" placeholder="Voter ID" class="pull-right" /><br><br> -->
-			<a onclick="countersd()" class="btn btn-primary pull-left">Vote</a>
-			<input type="text" id="policyId" placeholder="Policy ID" class="pull-right" /><br><br>
+			<a onclick="tableupdate()" class="btn btn-primary ">Update</a>
+			<!-- <input type="text" id="policyId" placeholder="Policy ID" class="pull-left" /><br><br>
             <input type="text" id="voterId" placeholder="Voter ID" class="pull-right" /><br><br>
+			<a onclick="countersd()" class="btn btn-primary pull-left">Vote</a> -->
+			<input type="text" id="policyId" placeholder="Policy ID" class="pull-right" /><br>
+            <!-- <input type="text" id="voterId" placeholder="Voter ID" class="pull-right" /><br><br> -->
 			<a onclick="votePolicy()" class="btn btn-primary pull-right">Vote</a>
 			<table class="table table-bordered table-hover" id="someTable" >
 				<thead>
@@ -145,6 +145,8 @@
 							Premium
 						</th>
 						<th>
+							Vote Counted
+						<th>
 							Status
 						</th>
 					</tr>
@@ -156,6 +158,9 @@
 						</td>
 						<td>
 							TB - Monthly
+						</td>
+						<td>
+							test
 						</td>
 						<td>
 							01/04/2012
@@ -170,6 +175,63 @@
 		</div>
 	</div>
 </div>
+
+<div class="row">
+		<div class="col-md-12">
+			<h3 class="text-center">
+				Status of Applied Claims
+			</h3>
+			<a onclick="tableupdateclaim()" class="btn btn-primary ">Update</a>
+			<!-- <input type="text" id="policyId" placeholder="Policy ID" class="pull-left" /><br><br>
+            <input type="text" id="voterId" placeholder="Voter ID" class="pull-right" /><br><br>
+			<a onclick="countersd()" class="btn btn-primary pull-left">Vote</a> -->
+			<input type="text" id="claimId" placeholder="Claim ID" class="pull-right" /><br>
+            <!-- <input type="text" id="voterId" placeholder="Voter ID" class="pull-right" /><br><br> -->
+			<a onclick="voteClaim()" class="btn btn-primary pull-right">Vote</a>
+			<table class="table table-bordered table-hover" id="claimTable" >
+				<thead>
+					<tr>
+						<th>
+							#
+						</th>
+						<th>
+							PolicyId
+						</th>
+						<th>
+							Refernce ID
+						</th>
+						<th>
+							Vote Counted
+						<th>
+							Status
+						</th>
+					</tr>
+				</thead>
+				<tbody >
+					<tr>
+						<td>
+							1
+						</td>
+						<td>
+							TB - Monthly
+						</td>
+						<td>
+							test
+						</td>
+						<td>
+							01/04/2012
+						</td>
+						<td>
+							Default
+						</td>
+					</tr>
+					
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
 
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

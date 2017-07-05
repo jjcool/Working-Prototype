@@ -124,10 +124,12 @@
 
 				<h2 style="color: black "> Dashboard for Customer to apply for new claim </h2>
           <br>
-            <input type="text" id="ref_id" placeholder="Reference ID" />
-            <input type="text" id="carrier" placeholder="Insurer"/>
-            <input type="text" id="premium" placeholder="Premium"/><br><br>
+            <input type="text" id="claimId" placeholder="Policy ID"/><br><br>
             <a href="#" onclick="newClaim()" class="btn btn-primary" id= "button">Submit</a>
+            <br><br>
+
+            <input type="text" id="claimId1" placeholder="Policy ID"/><br><br>
+            <a href="#" onclick="statusClaim()" class="btn btn-primary" id= "button">Status</a>
             <br><br>
             <!-- <input type="text" id="policyId1" placeholder="Policy ID" />
             <a href="#" onclick="statusPolicy()" class="btn btn-primary" id= "button">Get Status</a>

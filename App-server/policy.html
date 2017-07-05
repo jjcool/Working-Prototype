@@ -96,13 +96,20 @@
 				</div>
 				
 			</nav>
-			<div class="jumbotron">
+			<div class="jumbotron form-group">
 
 				<h2 style="color: black "> Dashboard for Customer to apply for new policy </h2>
           <br>
-            <input type="text" id="ref_id" placeholder="Reference ID" />
-            <input type="text" id="carrier" placeholder="Insurer"/>
-            <input type="text" id="premium" placeholder="Premium"/><br><br>
+            <!-- <input type="text" id="ref_id" placeholder="Reference ID" /> -->
+            <label for="ref_id">Select Insurance Type:</label>
+  					<select class="form-control" id="ref_id">
+   					<option>Car Accident</option>
+    				<option>Home Fire</option>
+				    <option>Office Fire</option>
+				    <option>Hit and Run </option>
+				  </select><br>
+            <input class = "form-control" type="text" id="carrier" placeholder="Insurer"/><br>
+            <input class = "form-control" type="text" id="premium" placeholder="Premium"/><br><br>
             <a href="#" onclick="newRequest()" class="btn btn-primary" id= "button">Submit</a>
             <br><br>
             <!-- <input type="text" id="policyId1" placeholder="Policy ID" />
