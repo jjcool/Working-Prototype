@@ -101,7 +101,7 @@ contract test{
 		address customer;
 		string reference_id;
 		string carrier ; 
-		string doc_url;
+		string claimStatus;
 		uint AIG ;
 		uint BHSI ;
 		uint LIC ;
@@ -116,7 +116,7 @@ contract test{
 		address customer;
 		string reference_id;
 		string carrier ; 
-		string doc_url;
+		string claimStatus;
 		uint AIG ;
 		uint BHSI ;
 		uint LIC ;
@@ -143,6 +143,7 @@ contract test{
         p.reference_id = reference_id ; 
         p.carrier = carrier ; 
         p.premium = premium ; 
+        p.claimStatus = "Not Applied" ;
         p.status = "Policy to be approved " ;
         p.AIG = 0 ;
         p.BHSI = 0 ; 
@@ -158,24 +159,29 @@ contract test{
 	}
 
 	function new_claim(uint _policyId) returns(bool){
-		uint claimId = claims.length++;
-		customerClaims[this].push(claimId);
-
 		policy x = policies[_policyId] ;
-		claimstruct y = claims[claimId];
+		if(keccak256(x.claimStatus) != keccak256("Applied for claim") && keccak256(x.status) == keccak256("Policy approved")){
+				uint claimId = claims.length++;
+				customerClaims[this].push(claimId);
+				claimstruct y = claims[claimId];
 
-		y.customer = x.customer ;
-        y.timeStamp = now ;
-        y.reference_id = x.reference_id ; 
-        y.carrier = x.carrier ; 
-        y.premium = x.premium * 3  ; 
-        y.status = "Claim to be approved " ;
-        y.AIG = 0 ;
-        y.BHSI = 0 ; 
-        y.LIC = 0 ;
-        counterClaim[claimId] = 0 ;
-
-        return true ;
+				y.customer = x.customer ;
+		        y.id = _policyId ;
+		        y.reference_id = x.reference_id ; 
+		        y.carrier = x.carrier ; 
+		        y.premium = x.premium * 3  ; 
+		        y.status = "Claim to be approved " ;
+		        y.AIG = 0 ;
+		        y.BHSI = 0 ; 
+		        y.LIC = 0 ;
+		        counterClaim[claimId] = 0 ;
+		        x.claimStatus = "Applied for claim" ;
+		        statusValidation(claimId);
+		        stringReturn("Claim Added") ;
+		        return true;
+			}
+		else {stringReturn("Already Applied for Claim or Policy not approved") ;}
+		return false ;
 	}
 	
 	// function new_claim(address addresss, uint id, uint premium) returns (bool) {
@@ -360,6 +366,14 @@ contract test{
 
 	 }
 
+	 function claim_policyID(uint _claimId) constant returns (uint) { 
+
+		claimstruct x = claims[_claimId] ; 
+
+		return x.id ;
+
+
+	 }
 
 	function policyId() constant returns(uint){
 
@@ -382,6 +396,10 @@ contract test{
 	function counterClaim(uint _policyId) constant returns (uint){
 
 		return counterClaim[_policyId] ;
+	}
+
+	function stringReturn(string test) constant returns (string){
+		return test ;
 	}
 
 }

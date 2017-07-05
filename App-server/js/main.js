@@ -1,8 +1,8 @@
 
 web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
-abi = JSON.parse('[{"constant":false,"inputs":[{"name":"_policyId","type":"uint256"}],"name":"statusValidation","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_policyId","type":"uint256"}],"name":"counterClaim","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_claimId","type":"uint256"},{"name":"voterId","type":"string"}],"name":"counterClaims","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"},{"name":"","type":"uint256"}],"name":"customerPolicies","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"amount","type":"uint256"}],"name":"status","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"},{"name":"","type":"uint256"}],"name":"customerClaims","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"claimId","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_policyId","type":"uint256"}],"name":"counterPolicy","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_claimId","type":"uint256"}],"name":"reference_id","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"claims","outputs":[{"name":"id","type":"uint256"},{"name":"customer","type":"address"},{"name":"reference_id","type":"string"},{"name":"carrier","type":"string"},{"name":"doc_url","type":"string"},{"name":"AIG","type":"uint256"},{"name":"BHSI","type":"uint256"},{"name":"LIC","type":"uint256"},{"name":"timeStamp","type":"uint256"},{"name":"premium","type":"uint256"},{"name":"status","type":"string"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_policyId","type":"uint256"}],"name":"premium","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"policies","outputs":[{"name":"id","type":"uint256"},{"name":"customer","type":"address"},{"name":"reference_id","type":"string"},{"name":"carrier","type":"string"},{"name":"doc_url","type":"string"},{"name":"AIG","type":"uint256"},{"name":"BHSI","type":"uint256"},{"name":"LIC","type":"uint256"},{"name":"timeStamp","type":"uint256"},{"name":"premium","type":"uint256"},{"name":"status","type":"string"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"policyId","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"reference_id","type":"string"},{"name":"carrier","type":"string"},{"name":"premium","type":"uint256"}],"name":"new_request","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_policyId","type":"uint256"}],"name":"statusPolicy","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_policyId","type":"uint256"}],"name":"new_claim","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_policyId","type":"uint256"},{"name":"voterId","type":"string"}],"name":"counterPolicys","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_claimId","type":"uint256"}],"name":"statusClaim","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"anonymous":false,"inputs":[{"indexed":false,"name":"policyId","type":"uint256"},{"indexed":false,"name":"customer","type":"address"},{"indexed":false,"name":"referenceId","type":"string"},{"indexed":false,"name":"premium","type":"uint256"},{"indexed":false,"name":"timeStamp","type":"uint256"},{"indexed":false,"name":"status","type":"string"}],"name":"LOG_PolicyApplied","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"policyId","type":"uint256"},{"indexed":false,"name":"customer","type":"address"},{"indexed":false,"name":"id","type":"uint256"},{"indexed":false,"name":"premium","type":"uint256"},{"indexed":false,"name":"timeStamp","type":"uint256"},{"indexed":false,"name":"status","type":"string"}],"name":"LOG_ClaimApplied","type":"event"}]');
+abi = JSON.parse('[{"constant":false,"inputs":[{"name":"_policyId","type":"uint256"}],"name":"statusValidation","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"test","type":"string"}],"name":"stringReturn","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_policyId","type":"uint256"}],"name":"counterClaim","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_claimId","type":"uint256"},{"name":"voterId","type":"string"}],"name":"counterClaims","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"},{"name":"","type":"uint256"}],"name":"customerPolicies","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"amount","type":"uint256"}],"name":"status","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_claimId","type":"uint256"}],"name":"claim_policyID","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"},{"name":"","type":"uint256"}],"name":"customerClaims","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"claimId","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_policyId","type":"uint256"}],"name":"counterPolicy","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_claimId","type":"uint256"}],"name":"reference_id","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"claims","outputs":[{"name":"id","type":"uint256"},{"name":"customer","type":"address"},{"name":"reference_id","type":"string"},{"name":"carrier","type":"string"},{"name":"claimStatus","type":"string"},{"name":"AIG","type":"uint256"},{"name":"BHSI","type":"uint256"},{"name":"LIC","type":"uint256"},{"name":"timeStamp","type":"uint256"},{"name":"premium","type":"uint256"},{"name":"status","type":"string"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_policyId","type":"uint256"}],"name":"premium","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"policies","outputs":[{"name":"id","type":"uint256"},{"name":"customer","type":"address"},{"name":"reference_id","type":"string"},{"name":"carrier","type":"string"},{"name":"claimStatus","type":"string"},{"name":"AIG","type":"uint256"},{"name":"BHSI","type":"uint256"},{"name":"LIC","type":"uint256"},{"name":"timeStamp","type":"uint256"},{"name":"premium","type":"uint256"},{"name":"status","type":"string"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"policyId","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"reference_id","type":"string"},{"name":"carrier","type":"string"},{"name":"premium","type":"uint256"}],"name":"new_request","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_policyId","type":"uint256"}],"name":"statusPolicy","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_policyId","type":"uint256"}],"name":"new_claim","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_policyId","type":"uint256"},{"name":"voterId","type":"string"}],"name":"counterPolicys","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_claimId","type":"uint256"}],"name":"statusClaim","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"anonymous":false,"inputs":[{"indexed":false,"name":"policyId","type":"uint256"},{"indexed":false,"name":"customer","type":"address"},{"indexed":false,"name":"referenceId","type":"string"},{"indexed":false,"name":"premium","type":"uint256"},{"indexed":false,"name":"timeStamp","type":"uint256"},{"indexed":false,"name":"status","type":"string"}],"name":"LOG_PolicyApplied","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"policyId","type":"uint256"},{"indexed":false,"name":"customer","type":"address"},{"indexed":false,"name":"id","type":"uint256"},{"indexed":false,"name":"premium","type":"uint256"},{"indexed":false,"name":"timeStamp","type":"uint256"},{"indexed":false,"name":"status","type":"string"}],"name":"LOG_ClaimApplied","type":"event"}]');
 VotingContract = web3.eth.contract(abi);
-contractInstance = VotingContract.at('0xb2fcdf1419c43d49eea064f5c57abe0bab1b9a10');
+contractInstance = VotingContract.at('0x62e43c932073602346f1db2542703fa985d11b48');
 
 var AIGContractAddress = "0xe5bb189406972f63f78eb7ebb6b642f3a326f954";
 var BHSIContractAddress = "0x4f7879fac25587ea87415919ff793585688ec86e";
@@ -113,13 +113,17 @@ function newClaim(claimId) {
 
 	//if(address != "" && id != "" && premium != ""){
 			console.log("Claim started");
-			contractInstance.new_claim(claimId, {from: web3.eth.accounts[0] , gas :'900000'})/*, function() {
+			contractInstance.new_claim(claimId, {from: web3.eth.accounts[0] , gas :'900000'})
+			console.log(contractInstance.new_claim(claimId, {from: web3.eth.accounts[0] , gas :'900000'}));
+			/*, function() {
 			    let div_id = candidates[candidateName];
 			    $("#" + div_id).html(contractInstance.totalVotesFor.call(candidateName).toString());
 			  }*/;
 			//$('<br><div class = "panel" > <h2> reference id ' + address + "</h2><br> carrier: "+ id +"<br> premium: " + premium +"</div>").appendTo('.claim');
 			//$('#table').append('<tr><th text = "ref_id"></th><td>more data</td><td>mosre data</td></tr>');
-			contractInstance.statusValidation( claimId , {from: web3.eth.accounts[0] , gas :'900000'});
+			// var id =  contractInstance.claimId().c;
+			// console.log(contractInstance.claimId().c)
+			// contractInstance.statusValidation(id, {from: web3.eth.accounts[0] , gas :'900000'});
 			console.log("Claim made");
 			//$('<br><div class = "panel text" > <h2> Claim Details </h2> <br> Address : ' + address + "<br> ID :  "+ id +"<br> Premium : " + premium +"</div>").appendTo('.claim');
 
@@ -210,6 +214,7 @@ function tableupdate(){
 	for (var i = 0 ; i <= policies ; i++) {
 		//var j = 1 ;
 		var status = contractInstance.statusPolicy(i) ;
+		
 		var counts = contractInstance.counterPolicy(i).c ;
 		var premium = contractInstance.premium(i) ;
 		console.log("Status of polciy id " + i + " is : " + status); 
@@ -220,6 +225,7 @@ function tableupdate(){
     	var cell3 = row.insertCell(2);
     	var cell4 = row.insertCell(3);
     	var cell5 = row.insertCell(4);
+
     	cell1.innerHTML = j;
     	cell2.innerHTML = i;
     	cell3.innerHTML = premium;
@@ -240,6 +246,7 @@ function tableupdateclaim(){
 	for (var i = 0 ; i <= claims ; i++) {
 		//var j = 1 ;
 		var status = contractInstance.statusClaim(i) ;
+		var id = contractInstance.claim_policyID(i);
 		var counts = contractInstance.counterClaim(i).c ;
 		var ref_id = contractInstance.reference_id(i) ;
 		//console.log("Status of polciy id " + i + " is : " + status); 
@@ -250,11 +257,13 @@ function tableupdateclaim(){
     	var cell3 = row.insertCell(2);
     	var cell4 = row.insertCell(3);
     	var cell5 = row.insertCell(4);
+    	var cell6 = row.insertCell(5);
     	cell1.innerHTML = j;
     	cell2.innerHTML = i;
-    	cell3.innerHTML = ref_id;
-    	cell4.innerHTML = counts;
-    	cell5.innerHTML = status;
+    	cell3.innerHTML = id;
+    	cell4.innerHTML = ref_id;
+    	cell5.innerHTML = counts;
+    	cell6.innerHTML = status;
     	j--;
 		//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
 		//$('<div class = panel > <h2>'+  i + ' </h2 > <br> <h4>' + status + '</h4></div >').appendTo('.test');
