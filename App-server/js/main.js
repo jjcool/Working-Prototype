@@ -17,6 +17,7 @@ var Jayesh = "SomeString";
 var policyID = 0 ;
 var count = 0 ;
 
+
 function newRequest(ref_id , carrier , premium ) {
    ref_id = $("#ref_id").val();
   carrier = $("#carrier").val();
@@ -25,7 +26,7 @@ function newRequest(ref_id , carrier , premium ) {
   if(ref_id != "" && carrier != "" && premium != "" ){
  
 console.log("Policy Application started");
-contractInstance.new_request(ref_id,carrier,premium , {from: web3.eth.accounts[0] , gas :'900000'})/*, function() {
+contractInstance.new_request(ref_id,carrier,premium , {from: web3.eth.accounts[0] , gas :'900000'}) ;/*, function() {
     let div_id = candidates[candidateName];
     $("#" + div_id).html(contractInstance.totalVotesFor.call(candidateName).toString());
   }*/;
