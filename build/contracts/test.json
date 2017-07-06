@@ -1670,8 +1670,170 @@
       "links": {},
       "address": "0x2cee3b2ba348d26070d3416b132210273533a271",
       "updated_at": 1499255268727
+    },
+    "1499316007171": {
+      "events": {
+        "0x771984e227230fd77da0801676cc69125eec175fedfe364e68960e65f90ad71d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "policyId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "customer",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "referenceId",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "name": "premium",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "timeStamp",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "status",
+              "type": "string"
+            }
+          ],
+          "name": "LOG_PolicyApplied",
+          "type": "event"
+        },
+        "0xf187fe6123901796c0a55dc5c68ec80efc955ee9f4fd27613654b7155bd6d11c": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "policyId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "customer",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "premium",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "timeStamp",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "status",
+              "type": "string"
+            }
+          ],
+          "name": "LOG_ClaimApplied",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x6896602289713c70f5bba29deb69b322b9332132",
+      "updated_at": 1499316022728
+    },
+    "1499316047637": {
+      "events": {
+        "0x771984e227230fd77da0801676cc69125eec175fedfe364e68960e65f90ad71d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "policyId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "customer",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "referenceId",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "name": "premium",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "timeStamp",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "status",
+              "type": "string"
+            }
+          ],
+          "name": "LOG_PolicyApplied",
+          "type": "event"
+        },
+        "0xf187fe6123901796c0a55dc5c68ec80efc955ee9f4fd27613654b7155bd6d11c": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "policyId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "customer",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "premium",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "timeStamp",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "status",
+              "type": "string"
+            }
+          ],
+          "name": "LOG_ClaimApplied",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x2bd84074a81fad807d53c7fac98d2927703c5344",
+      "updated_at": 1499316053654
     }
   },
   "schema_version": "0.0.5",
-  "updated_at": 1499255268727
+  "updated_at": 1499316053654
 }
