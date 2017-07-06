@@ -242,6 +242,7 @@ function tableupdate(){
     	cell5.innerHTML = counts;
     	cell6.innerHTML = status;
     	j--;
+    	
 		//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
 		//$('<div class = panel > <h2>'+  i + ' </h2 > <br> <h4>' + status + '</h4></div >').appendTo('.test');
 	}
