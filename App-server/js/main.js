@@ -261,7 +261,7 @@ function tableupdate(){
   //   	cell6.innerHTML = status;
 
   //   	j--;
-  if(status == "Policy approved") $('#someTable > tbody:last-child').prepend('<tr style="background-color: 	#F0E68C " ><td>' + j + '</td><td>' + i + '</td><td>' + ref_id + '</td><td>' + premium + '</td><td>' + votedS +'</td><td>'+status+'</td></tr>') ;
+  if(status == "Policy approved") $('#someTable > tbody:last-child').prepend('<tr class="success" ><td>' + j + '</td><td>' + i + '</td><td>' + ref_id + '</td><td>' + premium + '</td><td>' + votedS +'</td><td>'+status+'</td></tr>') ;
   else $('#someTable > tbody:last-child').prepend('<tr ><td>' + j + '</td><td>' + i + '</td><td>' + ref_id + '</td><td>' + premium + '</td><td>' + votedS +'</td><td>'+status+'</td></tr>') ;	
 		//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
 		//$('<div class = panel > <h2>'+  i + ' </h2 > <br> <h4>' + status + '</h4></div >').appendTo('.test');
@@ -312,7 +312,7 @@ function tableupdateclaim(){
   //   	cell6.innerHTML = status;
   //   	j--;
 
- if(status == "Claim approved") $('#claimTable > tbody:last-child').prepend('<tr style="background-color: 	#F0E68C " ><td>' + j + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + votedS +'</td><td>'+status+'</td></tr>') ;
+ if(status == "Claim approved") $('#claimTable > tbody:last-child').prepend('<tr class="success" ><td>' + j + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + votedS +'</td><td>'+status+'</td></tr>') ;
   else $('#claimTable > tbody:last-child').prepend('<tr ><td>' + j + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + votedS +'</td><td>'+status+'</td></tr>') ;		//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
 		//$('<div class = panel > <h2>'+  i + ' </h2 > <br> <h4>' + status + '</h4></div >').appendTo('.test');
 	}
