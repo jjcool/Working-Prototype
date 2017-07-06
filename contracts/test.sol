@@ -361,7 +361,13 @@ contract test{
 
 
 	 }
+	 
+	 function reference_id_policy(uint _policyId) constant returns (string){
+	 	policy x = policies[_policyId] ; 
 
+		return x.reference_id ;
+
+	 }
 	 function reference_id(uint _claimId) constant returns (string) { 
 
 		claimstruct x = claims[_claimId] ; 
@@ -405,6 +411,20 @@ contract test{
 
 	function stringReturn(string test) constant returns (string){
 		return test ;
+	}
+
+	function votePolicyInfo(uint policyId) constant returns (uint ,uint , uint){
+
+		policy x = policies[policyId] ; 
+
+		return (x.AIG,x.BHSI,x.LIC) ;
+	}
+
+	function voteClaimInfo(uint claimId) constant returns (uint ,uint , uint){
+
+		claimstruct x = claims[claimId] ; 
+
+		return (x.AIG,x.BHSI,x.LIC) ;
 	}
 
 }

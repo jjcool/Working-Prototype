@@ -8,6 +8,8 @@ var AIGContractAddress = "0xe5bb189406972f63f78eb7ebb6b642f3a326f954";
 var BHSIContractAddress = "0x4f7879fac25587ea87415919ff793585688ec86e";
 var LICContractAddress = "0x3db06be2ee7c51cc6b00b44f4883f5cbce81a6b3";
 
+var txFilterPolicy= contractInstance.LOG_PolicyApplied();
+var txFilterClaim = contractInstance.LOG_ClaimApplied();
 var Jayesh = "SomeString";
 var policyID = 0 ;
 var count = 0 ;
@@ -76,27 +78,25 @@ var count = 0 ;
 // 	else alert("Empty Credentials");
 // }
 
-function voteClaim(claimId, voterId){
-	claimId = $('#claimId').val();
-	voterId = $('#voterId').text();
+// function voteClaim(claimId, voterId){
+// 	claimId = $('#claimId').val();
+// 	voterId = $('#voterId').text();
 	
-	console.log(voterId);
-	if(claimId != ""){
+// 	console.log(voterId);
+// 	if(claimId != ""){
 
 		
-				console.log("Voting Started");
-				contractInstance.counterClaims(claimId , voterId, {from: web3.eth.accounts[0] , gas :'900000'});
-				alert("Voted Counted for Claim ID :  " + claimId )
-				console.log("Voting Ended");
-				// console.log(validation[0][policyId]);
-				// validation[0][policyId] = 1 ; 
-				// console.log(validation[0][policyId]);
+// 				console.log("Voting Started");
+// 				contractInstance.counterClaims(claimId , voterId, {from: web3.eth.accounts[0] , gas :'900000'});
+// 				alert("Voted Counted for Claim ID :  " + claimId )
+// 				console.log("Voting Ended");
+// 				// console.log(validation[0][policyId]);
+// 				// validation[0][policyId] = 1 ; 
+// 				// console.log(validation[0][policyId]);
 			
-	}
-	else alert("Empty Credentials");
-
-	location.reload();
-}
+// 	}
+// 	else alert("Empty Credentials");
+// }
 
 // function statusPolicy(policyId1){
 // 	policyId1 = $('#policyId1').val();
@@ -105,149 +105,149 @@ function voteClaim(claimId, voterId){
 
 // }
 
-function newClaim(claimId) {
-	//location.reload();
-  //  address = $("#address").val();
-  // id = $("#id").val();
-  // premium = $("#premium1").val();
-  claimId = $('#claimId').val();
-  var check = contractInstance.claimChecker(claimId).c ;
-	if(check == 1 ){
-			console.log("Claim started");
-			contractInstance.new_claim(claimId, {from: web3.eth.accounts[0] , gas :'900000'})
-			alert("Claim Submitted") ;
-			console.log("Claim made");
-		}
-
-	else alert("Already Applied for Claim or Policy not approved") ;
-
-	location.reload();
-			//console.log(contractInstance.new_claim(claimId, {from: web3.eth.accounts[0] , gas :'900000'}));
-
-			//alert("Your Claim ID is : " + contractInstance.claimId().c) ;
-			/*, function() {
-			    let div_id = candidates[candidateName];
-			    $("#" + div_id).html(contractInstance.totalVotesFor.call(candidateName).toString());
-			  }*/;
-			//$('<br><div class = "panel" > <h2> reference id ' + address + "</h2><br> carrier: "+ id +"<br> premium: " + premium +"</div>").appendTo('.claim');
-			//$('#table').append('<tr><th text = "ref_id"></th><td>more data</td><td>mosre data</td></tr>');
-			// var id =  contractInstance.claimId().c;
-			// console.log(contractInstance.claimId().c)
-			// contractInstance.statusValidation(id, {from: web3.eth.accounts[0] , gas :'900000'});
-			//console.log("Claim made");
-			//$('<br><div class = "panel text" > <h2> Claim Details </h2> <br> Address : ' + address + "<br> ID :  "+ id +"<br> Premium : " + premium +"</div>").appendTo('.claim');
-
-			// txFilterClaim.watch(function(err , result){
-
-			// 	if(err) throw err ;
-
-			// 	Jayesh = result.args.status;
-			// 	claimID = result.args.policyId;
-			// 		if(count == 0) {
-			// 		console.log("Status:" + Jayesh);
-			// 		alert("Claim no  :  " + claimID +"  Added for Approval ")
-			// 		//console.log(polciyID);
-			// 		$('<br><div class = "panel text" > <h2> Claim Details </h2> <br> Address : ' + address + "<br> ID :  "+ id +"<br> Premium : " + premium +"<br> Status : " + Jayesh + "<br> Claim ID : "+claimID+"</div>").appendTo('.claim');
-
-			// 		count ++ ;
-			// 		}
-			// 	})
-	//}
-	//else { console.log("wrong") }
-}
-
-// function voteClaim(claimId, voterId1){
-
-// 	claimId = $('#claimId').val();
-// 	voterId = $('#voterId1').val();
-// 	if(voterId == "Saurabh" || voterId == "Pankaj" || voterId == "Jayesh" || voterId == "Parmod"){
-// 	console.log("Voting started");
-// 	contractInstance.counterClaims(claimId , {from: web3.eth.accounts[0] , gas :'900000'});
-// 	alert("Voted Counted for Claim ID :  " + claimId )
-// 	console.log("Voting ended");
-// 	}
-// 	else alert("Wrong VoterID");
-// }
-
-function statusClaim(claimId){
-	claimId1 = $('#claimId1').val();
-	// if(contractInstance.statusClaim(claimId1) == "Claim approved") {
-	// 	console.log("Status:" + contractInstance.statusClaim(claimId1))
-
-	// 	var address = prompt("Please enter your address", "web3.eth.coinbase");
-	// 	//console.log(web3.eth.getBalance(web3.eth.accounts[1]).toNumber(),"ether");
-	// 	web3.eth.sendTransaction({from:web3.eth.coinbase, to:address, value: web3.toWei(0.5, "ether")});
-	// 	alert("0.5 Ether sent to " + address);
-	// 	//console.log(web3.eth.getBalance(web3.eth.accounts[0]).toNumber());
-	// }
-	 alert(contractInstance.statusClaim(claimId1));
-
-}
-
-// function tableupdate(){
-
-// 	var table = document.getElementById("someTable");
-//     // var row = table.insertRow(0);
-//     // var cell1 = row.insertCell(0);
-//     // var cell2 = row.insertCell(1);
-//     // cell1.innerHTML = "NEW CELL1";
-//     // cell2.innerHTML = "NEW CELL2";
-// 	var policies = contractInstance.policyId();
-// 	var j = policies ;
-// 	for (var i = 0; i < policies ; i++) {
-		
-// 		var status = contractInstance.statusPolicy(i) ;
-// 		console.log("Status of polciy id " + i + " is : " + status); 
-
-// 		// var row = table.insertRow(1);
-//   //   	var cell1 = row.insertCell(0);
-//   //   	var cell2 = row.insertCell(1);
-//   //   	var cell3 = row.insertCell(2);
-//   //   	var cell4 = row.insertCell(3);
-//   //   	cell1.innerHTML = j;
-//   //   	cell2.innerHTML = i;
-//   //   	cell3.innerHTML = 35;
-//   //   	cell4.innerHTML = status;
-//   //   	j--;
-
-
-// 		//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
-// 		//$('<div class = panel > <h2>'+  i + ' </h2 > <br> <h4>' + status + '</h4></div >').appendTo('.test');
-// 	}
-
-// }
-
-// function tableupdate(){
+// function newClaim(claimId) {
 // 	//location.reload();
-// 	var policies = contractInstance.policyId();
-// 	var table = document.getElementById("someTable");
-// 	var j = policies ;
-// 	for (var i = 0 ; i <= policies ; i++) {
-// 		//var j = 1 ;
-// 		var status = contractInstance.statusPolicy(i) ;
-		
-// 		var counts = contractInstance.counterPolicy(i).c ;
-// 		var premium = contractInstance.premium(i) ;
-// 		console.log("Status of polciy id " + i + " is : " + status); 
+//   //  address = $("#address").val();
+//   // id = $("#id").val();
+//   // premium = $("#premium1").val();
+//   claimId = $('#claimId').val();
+//   var check = contractInstance.claimChecker(claimId).c ;
+// 	if(check == 1 ){
+// 			console.log("Claim started");
+// 			contractInstance.new_claim(claimId, {from: web3.eth.accounts[0] , gas :'900000'})
+// 			alert("Claim Submitted") ;
+// 			console.log("Claim made");
+// 		}
 
-// 		var row = table.insertRow(1);
-//     	var cell1 = row.insertCell(0);
-//     	var cell2 = row.insertCell(1);
-//     	var cell3 = row.insertCell(2);
-//     	var cell4 = row.insertCell(3);
-//     	var cell5 = row.insertCell(4);
+// 	else alert("Already Applied for Claim or Policy not approved")
+// 			//console.log(contractInstance.new_claim(claimId, {from: web3.eth.accounts[0] , gas :'900000'}));
 
-//     	cell1.innerHTML = j;
-//     	cell2.innerHTML = i;
-//     	cell3.innerHTML = premium;
-//     	cell4.innerHTML = counts;
-//     	cell5.innerHTML = status;
-//     	j--;
-// 		//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
-// 		//$('<div class = panel > <h2>'+  i + ' </h2 > <br> <h4>' + status + '</h4></div >').appendTo('.test');
-// 	}
+// 			//alert("Your Claim ID is : " + contractInstance.claimId().c) ;
+// 			, function() {
+// 			    let div_id = candidates[candidateName];
+// 			    $("#" + div_id).html(contractInstance.totalVotesFor.call(candidateName).toString());
+// 			  };
+// 			//$('<br><div class = "panel" > <h2> reference id ' + address + "</h2><br> carrier: "+ id +"<br> premium: " + premium +"</div>").appendTo('.claim');
+// 			//$('#table').append('<tr><th text = "ref_id"></th><td>more data</td><td>mosre data</td></tr>');
+// 			// var id =  contractInstance.claimId().c;
+// 			// console.log(contractInstance.claimId().c)
+// 			// contractInstance.statusValidation(id, {from: web3.eth.accounts[0] , gas :'900000'});
+// 			//console.log("Claim made");
+// 			//$('<br><div class = "panel text" > <h2> Claim Details </h2> <br> Address : ' + address + "<br> ID :  "+ id +"<br> Premium : " + premium +"</div>").appendTo('.claim');
 
+// 			// txFilterClaim.watch(function(err , result){
+
+// 			// 	if(err) throw err ;
+
+// 			// 	Jayesh = result.args.status;
+// 			// 	claimID = result.args.policyId;
+// 			// 		if(count == 0) {
+// 			// 		console.log("Status:" + Jayesh);
+// 			// 		alert("Claim no  :  " + claimID +"  Added for Approval ")
+// 			// 		//console.log(polciyID);
+// 			// 		$('<br><div class = "panel text" > <h2> Claim Details </h2> <br> Address : ' + address + "<br> ID :  "+ id +"<br> Premium : " + premium +"<br> Status : " + Jayesh + "<br> Claim ID : "+claimID+"</div>").appendTo('.claim');
+
+// 			// 		count ++ ;
+// 			// 		}
+// 			// 	})
+// 	//}
+// 	//else { console.log("wrong") }
 // }
+
+// // function voteClaim(claimId, voterId1){
+
+// // 	claimId = $('#claimId').val();
+// // 	voterId = $('#voterId1').val();
+// // 	if(voterId == "Saurabh" || voterId == "Pankaj" || voterId == "Jayesh" || voterId == "Parmod"){
+// // 	console.log("Voting started");
+// // 	contractInstance.counterClaims(claimId , {from: web3.eth.accounts[0] , gas :'900000'});
+// // 	alert("Voted Counted for Claim ID :  " + claimId )
+// // 	console.log("Voting ended");
+// // 	}
+// // 	else alert("Wrong VoterID");
+// // }
+
+// function statusClaim(claimId){
+// 	claimId1 = $('#claimId1').val();
+// 	// if(contractInstance.statusClaim(claimId1) == "Claim approved") {
+// 	// 	console.log("Status:" + contractInstance.statusClaim(claimId1))
+
+// 	// 	var address = prompt("Please enter your address", "web3.eth.coinbase");
+// 	// 	//console.log(web3.eth.getBalance(web3.eth.accounts[1]).toNumber(),"ether");
+// 	// 	web3.eth.sendTransaction({from:web3.eth.coinbase, to:address, value: web3.toWei(0.5, "ether")});
+// 	// 	alert("0.5 Ether sent to " + address);
+// 	// 	//console.log(web3.eth.getBalance(web3.eth.accounts[0]).toNumber());
+// 	// }
+// 	 alert(contractInstance.statusClaim(claimId1));
+// }
+
+// // function tableupdate(){
+
+// // 	var table = document.getElementById("someTable");
+// //     // var row = table.insertRow(0);
+// //     // var cell1 = row.insertCell(0);
+// //     // var cell2 = row.insertCell(1);
+// //     // cell1.innerHTML = "NEW CELL1";
+// //     // cell2.innerHTML = "NEW CELL2";
+// // 	var policies = contractInstance.policyId();
+// // 	var j = policies ;
+// // 	for (var i = 0; i < policies ; i++) {
+		
+// // 		var status = contractInstance.statusPolicy(i) ;
+// // 		console.log("Status of polciy id " + i + " is : " + status); 
+
+// // 		// var row = table.insertRow(1);
+// //   //   	var cell1 = row.insertCell(0);
+// //   //   	var cell2 = row.insertCell(1);
+// //   //   	var cell3 = row.insertCell(2);
+// //   //   	var cell4 = row.insertCell(3);
+// //   //   	cell1.innerHTML = j;
+// //   //   	cell2.innerHTML = i;
+// //   //   	cell3.innerHTML = 35;
+// //   //   	cell4.innerHTML = status;
+// //   //   	j--;
+
+
+// // 		//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
+// // 		//$('<div class = panel > <h2>'+  i + ' </h2 > <br> <h4>' + status + '</h4></div >').appendTo('.test');
+// // 	}
+
+// // }
+
+function tableupdate(){
+	//location.reload();
+	var policies = contractInstance.policyId();
+	var table = document.getElementById("someTable");
+	var j = policies ;
+	for (var i = 0 ; i <= policies ; i++) {
+		//var j = 1 ;
+		var status = contractInstance.statusPolicy(i) ;
+		var ref_id = contractInstance.reference_id_policy(i) ;
+		var counts = contractInstance.counterPolicy(i).c ;
+		var premium = contractInstance.premium(i) ;
+		console.log("Status of polciy id " + i + " is : " + status); 
+
+		var row = table.insertRow(1);
+    	var cell1 = row.insertCell(0);
+    	var cell2 = row.insertCell(1);
+    	var cell3 = row.insertCell(2);
+    	var cell4 = row.insertCell(3);
+    	var cell5 = row.insertCell(4);
+    	var cell6 = row.insertCell(5);
+
+    	cell1.innerHTML = j;
+    	cell2.innerHTML = i;
+    	cell3.innerHTML = ref_id;
+    	cell4.innerHTML = premium;
+    	cell5.innerHTML = counts;
+    	cell6.innerHTML = status;
+    	j--;
+		//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
+		//$('<div class = panel > <h2>'+  i + ' </h2 > <br> <h4>' + status + '</h4></div >').appendTo('.test');
+	}
+	location.reload();
+
+}
 
 function tableupdateclaim(){
 	//location.reload();
@@ -279,10 +279,9 @@ function tableupdateclaim(){
 		//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
 		//$('<div class = panel > <h2>'+  i + ' </h2 > <br> <h4>' + status + '</h4></div >').appendTo('.test');
 	}
+	location.reload();
 
 }
-
-
 
 // function countersd(_policyId){
 
@@ -292,9 +291,39 @@ function tableupdateclaim(){
 
 $(document).ready(function(){
 
+	var policies = contractInstance.policyId();
+	var table = document.getElementById("someTable");
+	var j = policies ;
+	for (var i = 0 ; i <= policies ; i++) {
+		//var j = 1 ;
+		var status = contractInstance.statusPolicy(i) ;
+		var ref_id = contractInstance.reference_id_policy(i) ;
+		var counts = contractInstance.counterPolicy(i).c ;
+		var premium = contractInstance.premium(i) ;
+		console.log("Status of polciy id " + i + " is : " + status); 
+
+		var row = table.insertRow(1);
+    	var cell1 = row.insertCell(0);
+    	var cell2 = row.insertCell(1);
+    	var cell3 = row.insertCell(2);
+    	var cell4 = row.insertCell(3);
+    	var cell5 = row.insertCell(4);
+    	var cell6 = row.insertCell(5);
+
+    	cell1.innerHTML = j;
+    	cell2.innerHTML = i;
+    	cell3.innerHTML = ref_id;
+    	cell4.innerHTML = premium;
+    	cell5.innerHTML = counts;
+    	cell6.innerHTML = status;
+    	j--;
+		//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
+		//$('<div class = panel > <h2>'+  i + ' </h2 > <br> <h4>' + status + '</h4></div >').appendTo('.test');
+	} ;
+
 	var claims = contractInstance.claimId();
 	var table = document.getElementById("claimTable");
-	var j = claims ;
+	var k = claims ;
 	for (var i = 0 ; i <= claims ; i++) {
 		//var j = 1 ;
 		var status = contractInstance.statusClaim(i) ;
@@ -310,21 +339,19 @@ $(document).ready(function(){
     	var cell4 = row.insertCell(3);
     	var cell5 = row.insertCell(4);
     	var cell6 = row.insertCell(5);
-    	cell1.innerHTML = j;
+    	cell1.innerHTML = k;
     	cell2.innerHTML = i;
     	cell3.innerHTML = id;
     	cell4.innerHTML = ref_id;
     	cell5.innerHTML = counts;
     	cell6.innerHTML = status;
-    	j--;
+    	k--;
 		//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
 		//$('<div class = panel > <h2>'+  i + ' </h2 > <br> <h4>' + status + '</h4></div >').appendTo('.test');
 	}
+
+
 })
-
-
-
-// })
 
 // }	)
 // $('#somes').click(function () {

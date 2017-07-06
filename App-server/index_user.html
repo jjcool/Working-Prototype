@@ -126,7 +126,8 @@
 				Status of Applied Policies
 			</h3>
 			<a onclick="tableupdate()" class="btn btn-primary ">Update</a>
-			<table class="table table-bordered table-hover" id="someTable"  >
+			<br><br>
+			<table class="table table-bordered table-hover" id="someTable" >
 				<thead>
 					<tr>
 						<th>
@@ -136,10 +137,13 @@
 							PolicyId
 						</th>
 						<th>
+							Reference ID
+						</th>
+						<th>
 							Premium
 						</th>
 						<th>
-							Vote Counted
+							Votes
 						<th>
 							Status
 						</th>
@@ -152,6 +156,9 @@
 						</td>
 						<td>
 							TB - Monthly
+						</td>
+						<td>
+							test
 						</td>
 						<td>
 							test
@@ -170,9 +177,43 @@
 	</div>
 </div>
 
+<div class="row">
+		<div class="col-md-12">
+			<h3 class="text-center">
+				Status of Applied Claims
+			</h3>
+			<a onclick="tableupdateclaim()" class="btn btn-primary ">Update</a>
+			<table class="table table-bordered table-hover" id="claimTable" >
+				<thead>
+					<tr>
+						<th>
+							S No.
+						</th>
+						<th>
+							ClaimId
+						</th>
+						<th>
+							PolicyId
+						</th>
+						<th>
+							Reference ID
+						</th>
+						<th>
+							Vote Counted
+						<th>
+							Status
+						</th>
+					</tr>
+				</thead>
+				<tbody >
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/scripts.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/index_user.js"></script>
+   <!--  <script src="js/main.js"></script> -->
   </body>
 </html>
