@@ -117,23 +117,26 @@ $(document).ready(function(){
 		var ref_id = contractInstance.reference_id_policy(i) ;
 		var counts = contractInstance.counterPolicy(i).c ;
 		var premium = contractInstance.premium(i) ;
-		console.log("Status of polciy id " + i + " is : " + status); 
+		//console.log("Status of polciy id " + i + " is : " + status); 
 
-		var row = table.insertRow(1);
-    	var cell1 = row.insertCell(0);
-    	var cell2 = row.insertCell(1);
-    	var cell3 = row.insertCell(2);
-    	var cell4 = row.insertCell(3);
-    	var cell5 = row.insertCell(4);
-    	var cell6 = row.insertCell(5);
+		// var row = table.insertRow(1);
+  //   	var cell1 = row.insertCell(0);
+  //   	var cell2 = row.insertCell(1);
+  //   	var cell3 = row.insertCell(2);
+  //   	var cell4 = row.insertCell(3);
+  //   	var cell5 = row.insertCell(4);
+  //   	var cell6 = row.insertCell(5);
 
-    	cell1.innerHTML = j;
-    	cell2.innerHTML = i;
-    	cell3.innerHTML = ref_id;
-    	cell4.innerHTML = premium;
-    	cell5.innerHTML = counts;
-    	cell6.innerHTML = status;
-    	j--;
+  //   	cell1.innerHTML = j;
+  //   	cell2.innerHTML = i;
+  //   	cell3.innerHTML = ref_id;
+  //   	cell4.innerHTML = premium;
+  //   	cell5.innerHTML = counts;
+  //   	cell6.innerHTML = status;
+    	if(status == "Policy approved" ) $('#someTable > tbody:last-child').prepend('<tr class="success" ><td>' + j + '</td><td>' + i + '</td><td>' + ref_id + '</td><td>' + premium + '</td><td>' + counts +'</td><td>'+status+'</td></tr>') ;
+  else $('#someTable > tbody:last-child').prepend('<tr class = "info"><td>' + j + '</td><td>' + i + '</td><td>' + ref_id + '</td><td>' + premium + '</td><td>' + counts +'</td><td>'+status+'</td></tr>') ;
+
+	j--;
 		//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
 		//$('<div class = panel > <h2>'+  i + ' </h2 > <br> <h4>' + status + '</h4></div >').appendTo('.test');
 	}

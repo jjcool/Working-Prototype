@@ -253,7 +253,7 @@ function tableupdateclaim(){
 	//location.reload();
 	var claims = contractInstance.claimId();
 	var table = document.getElementById("claimTable");
-	var j = claims ;
+	var k = claims ;
 	for (var i = 0 ; i <= claims ; i++) {
 		//var j = 1 ;
 		var status = contractInstance.statusClaim(i) ;
@@ -294,7 +294,7 @@ $(document).ready(function(){
 
 	var claims = contractInstance.claimId();
 	var table = document.getElementById("claimTable");
-	var j = claims ;
+	var k = claims ;
 	for (var i = 0 ; i <= claims ; i++) {
 		//var j = 1 ;
 		var status = contractInstance.statusClaim(i) ;
@@ -303,20 +303,23 @@ $(document).ready(function(){
 		var ref_id = contractInstance.reference_id(i) ;
 		//console.log("Status of polciy id " + i + " is : " + status); 
 
-		var row = table.insertRow(1);
-    	var cell1 = row.insertCell(0);
-    	var cell2 = row.insertCell(1);
-    	var cell3 = row.insertCell(2);
-    	var cell4 = row.insertCell(3);
-    	var cell5 = row.insertCell(4);
-    	var cell6 = row.insertCell(5);
-    	cell1.innerHTML = j;
-    	cell2.innerHTML = i;
-    	cell3.innerHTML = id;
-    	cell4.innerHTML = ref_id;
-    	cell5.innerHTML = counts;
-    	cell6.innerHTML = status;
-    	j--;
+		// var row = table.insertRow(1);
+  //   	var cell1 = row.insertCell(0);
+  //   	var cell2 = row.insertCell(1);
+  //   	var cell3 = row.insertCell(2);
+  //   	var cell4 = row.insertCell(3);
+  //   	var cell5 = row.insertCell(4);
+  //   	var cell6 = row.insertCell(5);
+  //   	cell1.innerHTML = j;
+  //   	cell2.innerHTML = i;
+  //   	cell3.innerHTML = id;
+  //   	cell4.innerHTML = ref_id;
+  //   	cell5.innerHTML = counts;
+  //   	cell6.innerHTML = status;
+    	if(status == "Claim approved") $('#claimTable > tbody:last-child').prepend('<tr class="success" ><td>' + k + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + counts +'</td><td>'+status+'</td></tr>') ;
+	    else $('#claimTable > tbody:last-child').prepend('<tr class = "danger"><td>' + k + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + counts +'</td><td>'+status+'</td></tr>') ;
+
+	k-- ;
 		//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
 		//$('<div class = panel > <h2>'+  i + ' </h2 > <br> <h4>' + status + '</h4></div >').appendTo('.test');
 	}

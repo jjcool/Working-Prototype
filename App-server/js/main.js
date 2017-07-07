@@ -76,6 +76,8 @@ function votePolicy(policyId, voterId){
 			
 	}
 	else alert("Empty Credentials");
+
+	location.reload();
 }
 
 function voteClaim(claimId, voterId){
@@ -96,6 +98,8 @@ function voteClaim(claimId, voterId){
 			
 	}
 	else alert("Empty Credentials");
+
+	location.reload();
 }
 
 function statusPolicy(policyId1){
@@ -181,6 +185,28 @@ function statusClaim(claimId){
 	 alert(contractInstance.statusClaim(claimId1));
 }
 
+
+$( function() {
+    $( "#dialog" ).dialog({
+    	minWidth: 500,
+    	minHeight: 200 ,
+      autoOpen: false,
+      show: {
+        effect: "blind",
+
+        duration: 100
+      },
+      hide: {
+        
+        duration: 100
+      }
+    });
+ 
+    $( "#opener" ).on( "click", function() {
+      $( "#dialog" ).dialog( "open" );
+    });
+  } );
+
 // function tableupdate(){
 
 // 	var table = document.getElementById("someTable");
@@ -261,10 +287,19 @@ function tableupdate(){
   //   	cell6.innerHTML = status;
 
   //   	j--;
-  if(status == "Policy approved") $('#someTable > tbody:last-child').prepend('<tr class="success" ><td>' + j + '</td><td>' + i + '</td><td>' + ref_id + '</td><td>' + premium + '</td><td>' + votedS +'</td><td>'+status+'</td></tr>') ;
-  else $('#someTable > tbody:last-child').prepend('<tr ><td>' + j + '</td><td>' + i + '</td><td>' + ref_id + '</td><td>' + premium + '</td><td>' + votedS +'</td><td>'+status+'</td></tr>') ;	
-		//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
-		//$('<div class = panel > <h2>'+  i + ' </h2 > <br> <h4>' + status + '</h4></div >').appendTo('.test');
+  if(status == "Policy approved" ) $('#someTable > tbody:last-child').prepend('<tr class="success" ><td>' + j + '</td><td>' + i + '</td><td>' + ref_id + '</td><td>' + premium + '</td><td>' + votedS +'</td><td>'+status+'</td></tr>') ;
+  else {
+  	if(votedS == "Yes"){ 
+	$('#someTable > tbody:last-child').prepend('<tr class = "info"><td>' + j + '</td><td>' + i + '</td><td>' + ref_id + '</td><td>' + premium + '</td><td>' + votedS +'</td><td>'+status+'</td></tr>') ;
+  	}
+
+  	else {
+  		$('#someTable > tbody:last-child').prepend('<tr class="danger" ><td>' + j + '</td><td>' + i + '</td><td>' + ref_id + '</td><td>' + premium + '</td><td>' + votedS +'</td><td>'+status+'</td></tr>') ;
+  	}
+
+  }	
+	j--;//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
+	location.reload();	//$('<div class = panel > <h2>'+  i + ' </h2 > <br> <h4>' + status + '</h4></div >').appendTo('.test');
 	}
 
 }
@@ -273,7 +308,7 @@ function tableupdateclaim(){
 	//location.reload();
 	var claims = contractInstance.claimId();
 	var table = document.getElementById("claimTable");
-	var j = claims ;
+	var k = claims;
 	for (var i = 0 ; i <= claims ; i++) {
 		//var j = 1 ;
 		var status = contractInstance.statusClaim(i) ;
@@ -282,18 +317,21 @@ function tableupdateclaim(){
 		var ref_id = contractInstance.reference_id(i) ;
 		if($('#voterId').text() == "AIG") {
 			var voted = contractInstance.voteClaimInfo(i)[0].c ;
-			if (voted == 1) var votedS = "Yes" ;
-			else var votedS = "No"
+			console.log(voted) ;
+			if (voted == 1) var votedSC = "Yes" ;
+			else var votedSC = "No"
 		}; 
 		if($('#voterId').text() == "BHSI") {
 			var voted = contractInstance.voteClaimInfo(i)[1].c ;
-			if (voted == 1) var votedS = "Yes" ;
-			else var votedS = "No"
+			console.log(voted) ;
+			if (voted == 1) var votedSC = "Yes" ;
+			else var votedSC = "No"
 		};
 		if($('#voterId').text() == "LIC"){
 			var voted = contractInstance.voteClaimInfo(i)[2].c ;
-			if (voted == 1) var votedS = "Yes" ;
-			else var votedS = "No"
+			console.log(voted) ;
+			if (voted == 1) var votedSC = "Yes" ;
+			else var votedSC = "No"
 		} ;
 		//console.log("Status of polciy id " + i + " is : " + status); 
 
@@ -312,10 +350,13 @@ function tableupdateclaim(){
   //   	cell6.innerHTML = status;
   //   	j--;
 
- if(status == "Claim approved") $('#claimTable > tbody:last-child').prepend('<tr class="success" ><td>' + j + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + votedS +'</td><td>'+status+'</td></tr>') ;
-  else $('#claimTable > tbody:last-child').prepend('<tr ><td>' + j + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + votedS +'</td><td>'+status+'</td></tr>') ;		//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
-		//$('<div class = panel > <h2>'+  i + ' </h2 > <br> <h4>' + status + '</h4></div >').appendTo('.test');
-	}
+ if(status == "Claim approved") $('#claimTable > tbody:last-child').prepend('<tr class="success" ><td>' + k + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + votedSC +'</td><td>'+status+'</td></tr>') ;
+  else {
+  if(votedSC = "Yes") $('#claimTable > tbody:last-child').prepend('<tr class = "info"><td>' + k + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + votedSC +'</td><td>'+status+'</td></tr>') ;		//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
+  else $('#claimTable > tbody:last-child').prepend('<tr class = "danger"><td>' + k + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + votedSC +'</td><td>'+status+'</td></tr>') ;
+
+}	k-- ;	//$('<div class = panel > <h2>'+  i + ' </h2 > <br> <h4>' + status + '</h4></div >').appendTo('.test');
+	location.reload();}
 
 }
 
@@ -325,37 +366,120 @@ function tableupdateclaim(){
 // 	console.log(contractInstance.counterPolicy(_policyId).c) ;
 // }
 
-// $(document).ready(function(){
+$(document).ready(function(){
 
-// 	var policies = contractInstance.policyId();
-// 	var table = document.getElementById("someTable");
-// 	var j = policies ;
-// 	for (var i = 0 ; i <= policies ; i++) {
-// 		//var j = 1 ;
-// 		var status = contractInstance.statusPolicy(i) ;
-// 		var counts = contractInstance.counterPolicy(i).c ;
-// 		var premium = contractInstance.premium(i) ;
-// 		console.log("Status of polciy id " + i + " is : " + status); 
+	var policies = contractInstance.policyId();
+	var table = document.getElementById("someTable");
+	var j = policies ;
+	for (var i = 0 ; i <= policies ; i++) {
+		//var j = 1 ;
+		var status = contractInstance.statusPolicy(i) ;
+		var ref_id = contractInstance.reference_id_policy(i) ;
+		var counts = contractInstance.counterPolicy(i).c ;
+		if($('#voterId').text() == "AIG") {
+			var voted = contractInstance.votePolicyInfo(i)[0].c ;
+			if (voted == 1) var votedS = "Yes" ;
+			else var votedS = "No"
+		}; 
+		if($('#voterId').text() == "BHSI") {
+			var voted = contractInstance.votePolicyInfo(i)[1].c ;
+			if (voted == 1) var votedS = "Yes" ;
+			else var votedS = "No"
+		};
+		if($('#voterId').text() == "LIC"){
+			var voted = contractInstance.votePolicyInfo(i)[2].c ;
+			if (voted == 1) var votedS = "Yes" ;
+			else var votedS = "No"
+		} ;
+		// console.log(contractInstance.votePolicyInfo(i)[0].c) ;
+		// console.log($('#voterId').text())
+		var premium = contractInstance.premium(i) ;
+		//var ref_id = contractInstance.reference_id(i) ;
+		//console.log("Status of polciy id " + i + " is : " + status); 
 
-// 		var row = table.insertRow(1);
-//     	var cell1 = row.insertCell(0);
-//     	var cell2 = row.insertCell(1);
-//     	var cell3 = row.insertCell(2);
-//     	var cell4 = row.insertCell(3);
-//     	var cell5 = row.insertCell(4);
-//     	cell1.innerHTML = j;
-//     	cell2.innerHTML = i;
-//     	cell3.innerHTML = premium;
-//     	cell4.innerHTML = counts;
-//     	cell5.innerHTML = status;
-//     	j--;
-// 		//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
-// 		//$('<div class = panel > <h2>'+  i + ' </h2 > <br> <h4>' + status + '</h4></div >').appendTo('.test');
-// 	}
+		// var row = table.insertRow(1);
+  //   	var cell1 = row.insertCell(0);
+  //   	var cell2 = row.insertCell(1);
+  //   	var cell3 = row.insertCell(2);
+  //   	var cell4 = row.insertCell(3);
+  //   	var cell5 = row.insertCell(4);
+  //   	var cell6 =row.insertCell(5);
 
+  //   	cell1.innerHTML = j;
+  //   	cell2.innerHTML = i;
+  //   	cell3.innerHTML = ref_id ;
+  //   	cell4.innerHTML = premium;
+  //   	cell5.innerHTML = votedS;
+  //   	cell6.innerHTML = status;
 
+  //   	j--;
+  if(status == "Policy approved" ) $('#someTable > tbody:last-child').prepend('<tr class="success" ><td>' + j + '</td><td>' + i + '</td><td>' + ref_id + '</td><td>' + premium + '</td><td>' + votedS +'</td><td>'+status+'</td></tr>') ;
+  else {
+  	if(votedS == "Yes"){ 
+	$('#someTable > tbody:last-child').prepend('<tr class = "info"><td>' + j + '</td><td>' + i + '</td><td>' + ref_id + '</td><td>' + premium + '</td><td>' + votedS +'</td><td>'+status+'</td></tr>') ;
+  	}
 
-// })
+  	else {
+  		$('#someTable > tbody:last-child').prepend('<tr class="danger" ><td>' + j + '</td><td>' + i + '</td><td>' + ref_id + '</td><td>' + premium + '</td><td>' + votedS +'</td><td>'+status+'</td></tr>') ;
+  	}
+
+  }	j--		//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
+		//$('<div class = panel > <h2>'+  i + ' </h2 > <br> <h4>' + status + '</h4></div >').appendTo('.test');
+	}
+
+	var claims = contractInstance.claimId();
+	var table = document.getElementById("claimTable");
+	var k = claims ;
+	for (var i = 0 ; i <= claims ; i++) {
+		//var j = 1 ;
+		var status = contractInstance.statusClaim(i) ;
+		var id = contractInstance.claim_policyID(i);
+		//var counts = contractInstance.counterClaim(i).c ;
+		var ref_id = contractInstance.reference_id(i) ;
+		if($('#voterId').text() == "AIG") {
+			var voted = contractInstance.voteClaimInfo(i)[0].c ;
+			//console.log(voted) ;
+			if (voted == 1) var votedSC = "Yes" ;
+			else var votedSC = "No"
+		}; 
+		if($('#voterId').text() == "BHSI") {
+			var voted = contractInstance.voteClaimInfo(i)[1].c ;
+			//console.log(voted) ;
+			if (voted == 1) var votedSC = "Yes" ;
+			else var votedSC = "No"
+		};
+		if($('#voterId').text() == "LIC"){
+			var voted = contractInstance.voteClaimInfo(i)[2].c ;
+			//console.log(voted) ;
+			if (voted == 1) var votedSC = "Yes" ;
+			else var votedSC = "No"
+		} ;
+		//console.log("Status of polciy id " + i + " is : " + status); 
+
+		// var row = table.insertRow(1);
+  //   	var cell1 = row.insertCell(0);
+  //   	var cell2 = row.insertCell(1);
+  //   	var cell3 = row.insertCell(2);
+  //   	var cell4 = row.insertCell(3);
+  //   	var cell5 = row.insertCell(4);
+  //   	var cell6 = row.insertCell(5);
+  //   	cell1.innerHTML = j;
+  //   	cell2.innerHTML = i;
+  //   	cell3.innerHTML = id;
+  //   	cell4.innerHTML = ref_id;
+  //   	cell5.innerHTML = votedS;
+  //   	cell6.innerHTML = status;
+  //   	j--;
+
+ if(status == "Claim approved") $('#claimTable > tbody:last-child').prepend('<tr class="success" ><td>' + k + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + votedSC +'</td><td>'+status+'</td></tr>') ;
+  else {
+  if(votedSC = "Yes") $('#claimTable > tbody:last-child').prepend('<tr class = "info"><td>' + k + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + votedSC +'</td><td>'+status+'</td></tr>') ;		//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
+  else $('#claimTable > tbody:last-child').prepend('<tr class = "danger"><td>' + k + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + votedSC +'</td><td>'+status+'</td></tr>') ;
+
+}	k-- ;	//$('<div class = panel > <h2>'+  i + ' </h2 > <br> <h4>' + status + '</h4></div >').appendTo('.test');
+	}
+
+})
 
 // }	)
 // $('#somes').click(function () {
