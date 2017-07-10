@@ -144,7 +144,7 @@ contract test{
         p.carrier = carrier ; 
         p.premium = premium ; 
         p.claimStatus = "Not Applied" ;
-        p.status = "Policy to be approved " ;
+        p.status = "Policy approved " ;
         p.AIG = 0 ;
         p.BHSI = 0 ; 
         p.LIC = 0 ;
@@ -186,7 +186,7 @@ contract test{
 	
 	function claimChecker (uint _policyId) constant returns(uint){
 		policy x = policies[_policyId] ;
-		if(keccak256(x.claimStatus) != keccak256("Applied for claim") && keccak256(x.status) == keccak256("Policy approved")) return 1 ; 
+		if(keccak256(x.claimStatus) != keccak256("Applied for claim") ) return 1 ; 
 		else return 0 ; 
 	}
 	// function new_claim(address addresss, uint id, uint premium) returns (bool) {
