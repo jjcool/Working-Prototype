@@ -96,13 +96,20 @@
 				</div>
 				
 			</nav>
-			<div class="jumbotron">
+			<div class="jumbotron form-group">
 
 				<h2 style="color: black "> Dashboard for Customer to apply for new policy </h2>
           <br>
-            <input type="text" id="ref_id" placeholder="Reference ID" />
-            <input type="text" id="carrier" placeholder="Insurer"/>
-            <input type="text" id="premium" placeholder="Premium"/><br><br>
+            <!-- <input type="text" id="ref_id" placeholder="Reference ID" /> -->
+            <label for="ref_id">Select Insurance Type:</label>
+  					<select class="form-control" id="ref_id">
+   					<option>Car Accident</option>
+    				<option>Home Fire</option>
+				    <option>Office Fire</option>
+				    <option>Hit and Run </option>
+				  </select><br>
+            <input class = "form-control" type="text" id="carrier" placeholder="Insurer"/><br>
+            <input class = "form-control" type="text" id="premium" placeholder="Premium"/><br><br>
             <a href="#" onclick="newRequest()" class="btn btn-primary" id= "button">Submit</a>
             <br><br>
             <!-- <input type="text" id="policyId1" placeholder="Policy ID" />
@@ -110,6 +117,63 @@
 			</div> -->
 		</div>
 	</div>
+
+
+		<div class="col-md-12">
+			<h3 class="text-center">
+				Status of Applied Policies
+			</h3>
+			<a onclick="tableupdate()" class="btn btn-primary ">Update</a><br><br>
+			<table class="table table-bordered table-hover" id="someTable" >
+				<thead>
+					<tr>
+						<th>
+							#
+						</th>
+						<th>
+							PolicyId
+						</th>
+						<th>
+							Reference ID
+						</th>
+						<th>
+							Premium
+						</th>
+						<th>
+							Votes
+						<th>
+							Status
+						</th>
+					</tr>
+				</thead>
+				<tbody >
+					<tr>
+						<td>
+							1
+						</td>
+						<td>
+							TB - Monthly
+						</td>
+						<td>
+							test
+						</td>
+						<td>
+							test
+						</td>
+						<td>
+							01/04/2012
+						</td>
+						<td>
+							Default
+						</td>
+					</tr>
+					
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
 	<!-- <div class="row">
 		<div class="col-md-4">
 			<h2>
@@ -149,7 +213,7 @@
 
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/scripts.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/policy.js"></script>
+    <!-- <script src="js/main.js"></script> -->
   </body>
 </html>
