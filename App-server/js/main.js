@@ -360,6 +360,31 @@ function tableupdateclaim(){
 
 }
 
+function login(loginId){
+	loginId = $('#loginId').val();
+
+	if(loginId == "User"){
+    window.location.href = 'index_user.html';
+    return false; 
+	}
+
+    if(loginId == "AIG"){
+    window.location.href = 'index_AIG.html';
+    return false; 
+	}
+
+	if(loginId == "BHSI"){
+    window.location.href = 'index_BHSI.html';
+    return false; 
+	}
+
+	if(loginId == "LIC"){
+    window.location.href = 'index_LIC.html';
+    return false; 
+	}
+}
+
+
 // function countersd(_policyId){
 
 // 	_policyId = $("#policyId").val() ;
@@ -470,7 +495,7 @@ $(document).ready(function(){
   //   	cell5.innerHTML = votedS;
   //   	cell6.innerHTML = status;
   //   	j--;
-
+  console.log(web3.eth.getBlock(31 ));
  if(status == "Claim approved") $('#claimTable > tbody:last-child').prepend('<tr class="success" ><td>' + k + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + votedSC +'</td><td>'+status+'</td></tr>') ;
   else {
   if(votedSC = "Yes") $('#claimTable > tbody:last-child').prepend('<tr class = "info"><td>' + k + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + votedSC +'</td><td>'+status+'</td></tr>') ;		//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
