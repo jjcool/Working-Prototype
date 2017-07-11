@@ -454,10 +454,11 @@ $(document).ready(function(){
 	j--;		//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
 		//$('<div class = panel > <h2>'+  i + ' </h2 > <br> <h4>' + status + '</h4></div >').appendTo('.test');
 	}
-
+	
 	var claims = contractInstance.claimId();
 	var table = document.getElementById("claimTable");
 	var k = claims ;
+
 	for (var i = 0 ; i <= claims ; i++) {
 		//var j = 1 ;
 		var status = contractInstance.statusClaim(i) ;
@@ -505,7 +506,9 @@ $(document).ready(function(){
   if(ClaimVoted == "Yes") $('#claimTable > tbody:last-child').prepend('<tr class = "info"><td>' + k + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + ClaimVoted +'</td><td>'+status+'</td></tr>') ;		//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
   else $('#claimTable > tbody:last-child').prepend('<tr class = "danger"><td>' + k + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + ClaimVoted +'</td><td>'+status+'</td></tr>') ;
 
-}	k-- ;	//$('<div class = panel > <h2>'+  i + ' </h2 > <br> <h4>' + status + '</h4></div >').appendTo('.test');
+}	
+
+k-- ;	//$('<div class = panel > <h2>'+  i + ' </h2 > <br> <h4>' + status + '</h4></div >').appendTo('.test');
 	}
 
 })
