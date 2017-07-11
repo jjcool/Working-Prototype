@@ -18,9 +18,10 @@
   </head>
   <body>
 
-    <div class="container-fluid">
+ <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
+			<h2> Login Page </h2>
 			<!-- <form role="form">
 				<div class="form-group">
 					 
@@ -52,13 +53,24 @@
 						<input type="checkbox"> Check me out
 					</label>
 				</div>  -->
-				<a href="index_user.html" onclick="Login" class="btn btn-primary ">Login as user</a>
-				<br><br>
-				<a href="index_AIG.html" onclick="Login" class="btn btn-primary ">Login as AIG</a>
-				<br><br>
-				<a href="index_BHSI.html" onclick="Login" class="btn btn-primary ">Login as BHSI</a>
-				<br><br>
-				<a href="index_LIC.html" onclick="Login" class="btn btn-primary ">Login as LIC</a>
+				<input class = "form-control" type="text" id="loginId" placeholder="LoginID"/><br>
+				<input class = "form-control" type="text" id="password" value="Password"/><br>
+            <a href="#" onclick="login()" class="btn btn-primary" id= "button">Login</a>
+			</div>
+		</div>
+	</div>
+	<br><br><br>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="jumbotron">
+				<h2 style="font-family: Verdana"> Rules for the application</h2>
+				<ol>
+					<li> The Login Id's are - User , AIG , BHSI , LIC .</li>
+					<li> New Policy to be submitted under "New Policy" header in User page.</li>
+					<li> New Claim to be sumbitted under "New Claim" header in User page.</li>
+					<li> Claim automatic approved for pre-defined insurance types </li>
+					<li> Claim approval can be given by Insurers by the vote button over the claim table </li>
+				</ol>
 			</div>
 		</div>
 	</div>
@@ -66,7 +78,7 @@
 
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/index.js"></script>
-    <!-- <script src="js/main.js"></script> -->
+    <!-- <script src="js/index.js"></script> -->
+    <script src="js/main.js"></script>
   </body>
 </html>
