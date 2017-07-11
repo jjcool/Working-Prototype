@@ -83,21 +83,45 @@ function votePolicy(policyId, voterId){
 function voteClaim(claimId, voterId){
 	claimId = $('#claimId').val();
 	voterId = $('#voterId').text();
-	
-	console.log(voterId);
-	if(claimId != ""){
 
-		
-				console.log("Voting Started");
-				contractInstance.counterClaims(claimId , voterId, {from: web3.eth.accounts[0] , gas :'900000'});
-				alert("Voted Counted for Claim ID :  " + claimId )
-				console.log("Voting Ended");
-				// console.log(validation[0][policyId]);
-				// validation[0][policyId] = 1 ; 
-				// console.log(validation[0][policyId]);
-			
+	if($('#voterId').text() == "AIG") {
+			var voted = contractInstance.voteClaimInfo(claimId)[0].c ;
+			//console.log(voted) ;
+			if (voted != 1) ClaimVoted = "No" ;
+			else ClaimVoted = "Yes"
+		}; 
+		if($('#voterId').text() == "BHSI") {
+			var voted = contractInstance.voteClaimInfo(claimId)[1].c ;
+			//console.log(voted) ;
+			if (voted != 1) ClaimVoted = "No" ;
+			else ClaimVoted = "Yes"
+		};
+		if($('#voterId').text() == "LIC"){
+			var voted = contractInstance.voteClaimInfo(claimId)[2].c ;
+			//console.log(voted) ;
+			if (voted != 1) ClaimVoted = "No" ;
+			else ClaimVoted = "Yes"
+		} ;
+
+	if(ClaimVoted != "Yes") {
+	
+				console.log(voterId);
+				if(claimId != ""){
+
+					
+							console.log("Voting Started");
+							contractInstance.counterClaims(claimId , voterId, {from: web3.eth.accounts[0] , gas :'900000'});
+							alert("Voted Counted for Claim ID :  " + claimId )
+							console.log("Voting Ended");
+							// console.log(validation[0][policyId]);
+							// validation[0][policyId] = 1 ; 
+							// console.log(validation[0][policyId]);
+						
+				}
+				else alert("Empty Credentials");
 	}
-	else alert("Empty Credentials");
+
+	else alert("Already Voted");
 
 	location.reload();
 }
