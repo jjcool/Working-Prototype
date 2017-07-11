@@ -35,7 +35,7 @@ contract BHSI {
     } 
 
     function claimCheck(string reference_id) constant returns (uint countClaim){
-    	if(keccak256(reference_id) == keccak256("Car Accident") || keccak256(reference_id) == keccak256("Home Fire")) countClaim = 1 ;
+    	if(keccak256(reference_id) == keccak256("Car Accident") || keccak256(reference_id) == keccak256("Office Fire")) countClaim = 1 ;
     	else countClaim = 0 ;
 
     	return countClaim ;
@@ -55,7 +55,7 @@ contract LIC {
     } 
 
     function claimCheck(string reference_id) constant returns (uint countClaim){
-    	if(keccak256(reference_id) == keccak256("Car Accident") || keccak256(reference_id) == keccak256("Home Fire")) countClaim = 1 ;
+    	if(keccak256(reference_id) == keccak256("Office Fire") || keccak256(reference_id) == keccak256("Hit and Run")) countClaim = 1 ;
     	else countClaim = 0 ;
 
     	return countClaim ;
