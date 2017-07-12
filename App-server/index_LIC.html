@@ -23,7 +23,8 @@
 					 
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-					</button> <a class="navbar-brand" href="index_LIC.html" id="voterId">LIC</a>
+					</button> <a class="navbar-brand" href="index_LIC.html" >Reinsurer 2</a>
+					<a class="navbar-brand" href="index_LIC.html" style="visibility: hidden" id="voterId">LIC</a>
 				</div>
 				
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -129,9 +130,6 @@
 			<!-- <input type="text" id="policyId" placeholder="Policy ID" class="pull-left" /><br><br>
             <input type="text" id="voterId" placeholder="Voter ID" class="pull-right" /><br><br>
 			<a onclick="countersd()" class="btn btn-primary pull-left">Vote</a> -->
-			<input type="text" id="policyId" placeholder="Policy ID" class="pull-right" /><br>
-            <!-- <input type="text" id="voterId" placeholder="Voter ID" class="pull-right" /><br><br> -->
-			<a onclick="votePolicy()" class="btn btn-primary pull-right">Vote</a>
 			<table class="table table-bordered table-hover" id="someTable" >
 				<thead>
 					<tr>
@@ -147,15 +145,10 @@
 						<th>
 							Premium
 						</th>
-						<th>
-							Voted(Y/N)
-						<th>
-							Status
-						</th>
 					</tr>
 				</thead>
 				<tbody >
-					<tr >
+					<!-- <tr >
 						<td>
 							1
 						</td>
@@ -168,13 +161,7 @@
 						<td>
 							test
 						</td>
-						<td>
-							01/04/2012
-						</td>
-						<td>
-							Default
-						</td>
-					</tr>
+					</tr> -->
 					
 				</tbody>
 			</table>
@@ -217,7 +204,7 @@
 					</tr>
 				</thead>
 				<tbody >
-					<tr>
+					<!-- <tr>
 						<td>
 							1
 						</td>
@@ -237,7 +224,7 @@
 						<td>
 							Default
 						</td>
-					</tr>
+					</tr> -->
 					
 				</tbody>
 			</table>
@@ -247,10 +234,10 @@
 
 <div id="dialog" title="Rules For automatic approval">
   <ol>
-  	<li>Policy is approved if the premium is < 40 . </li>
-  	<li> Claim approved automatically if ref_id = "Car Accident" or "Home Fire " . </li>
-  	<li> Color Codes(for Policies) <br> Red => Not voted and Not approved <br> Blue => Not voted and Approved <br> Green => Voted and Approved  </li>
-  	<li> Color Codes(for Claim) <br> Red => Not voted and Not approved <br> Blue => Not voted and Approved <br> Green => Voted and Approved  </li>
+  	
+  	<li> Claim approved automatically if insurance_type = "Office Fire" or "Hit and Run" . </li>
+  	<!-- <li> Color Codes(for Policies) <br> Red => Not voted and Not approved <br> Blue => Not voted and Approved <br> Green => Voted and Approved  </li> -->
+  	<li> Color Codes(for Claim) <br> Red => Not voted and Not approved <br> Blue => Voted and Not approved <br> Green => Voted and Approved  </li>
   </ol>
 </div>
 

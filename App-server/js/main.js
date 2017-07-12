@@ -1,8 +1,7 @@
-
 web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 abi = JSON.parse('[{"constant":false,"inputs":[{"name":"_policyId","type":"uint256"}],"name":"statusValidation","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"test","type":"string"}],"name":"stringReturn","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_policyId","type":"uint256"}],"name":"counterClaim","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_claimId","type":"uint256"},{"name":"voterId","type":"string"}],"name":"counterClaims","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"},{"name":"","type":"uint256"}],"name":"customerPolicies","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"policyId","type":"uint256"}],"name":"votePolicyInfo","outputs":[{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"amount","type":"uint256"}],"name":"status","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_policyId","type":"uint256"}],"name":"claimChecker","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_claimId","type":"uint256"}],"name":"claim_policyID","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_policyId","type":"uint256"}],"name":"reference_id_policy","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"},{"name":"","type":"uint256"}],"name":"customerClaims","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"claimId","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_policyId","type":"uint256"}],"name":"counterPolicy","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_claimId","type":"uint256"}],"name":"reference_id","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"claims","outputs":[{"name":"id","type":"uint256"},{"name":"customer","type":"address"},{"name":"reference_id","type":"string"},{"name":"carrier","type":"string"},{"name":"claimStatus","type":"string"},{"name":"AIG","type":"uint256"},{"name":"BHSI","type":"uint256"},{"name":"LIC","type":"uint256"},{"name":"timeStamp","type":"uint256"},{"name":"premium","type":"uint256"},{"name":"status","type":"string"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_policyId","type":"uint256"}],"name":"premium","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"policies","outputs":[{"name":"id","type":"uint256"},{"name":"customer","type":"address"},{"name":"reference_id","type":"string"},{"name":"carrier","type":"string"},{"name":"claimStatus","type":"string"},{"name":"AIG","type":"uint256"},{"name":"BHSI","type":"uint256"},{"name":"LIC","type":"uint256"},{"name":"timeStamp","type":"uint256"},{"name":"premium","type":"uint256"},{"name":"status","type":"string"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"claimId","type":"uint256"}],"name":"voteClaimInfo","outputs":[{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"policyId","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"reference_id","type":"string"},{"name":"carrier","type":"string"},{"name":"premium","type":"uint256"}],"name":"new_request","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_policyId","type":"uint256"}],"name":"statusPolicy","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_policyId","type":"uint256"}],"name":"new_claim","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_policyId","type":"uint256"},{"name":"voterId","type":"string"}],"name":"counterPolicys","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_claimId","type":"uint256"}],"name":"statusClaim","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"anonymous":false,"inputs":[{"indexed":false,"name":"policyId","type":"uint256"},{"indexed":false,"name":"customer","type":"address"},{"indexed":false,"name":"referenceId","type":"string"},{"indexed":false,"name":"premium","type":"uint256"},{"indexed":false,"name":"timeStamp","type":"uint256"},{"indexed":false,"name":"status","type":"string"}],"name":"LOG_PolicyApplied","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"policyId","type":"uint256"},{"indexed":false,"name":"customer","type":"address"},{"indexed":false,"name":"id","type":"uint256"},{"indexed":false,"name":"premium","type":"uint256"},{"indexed":false,"name":"timeStamp","type":"uint256"},{"indexed":false,"name":"status","type":"string"}],"name":"LOG_ClaimApplied","type":"event"}]');
 VotingContract = web3.eth.contract(abi);
-contractInstance = VotingContract.at('0x57ef1c5c4cd1ed104add80319e0e73173aa1a511');
+contractInstance = VotingContract.at('0x356dd665b662d76a69f9075f201f90e0062399ea');
 
 var AIGContractAddress = "0xe5bb189406972f63f78eb7ebb6b642f3a326f954";
 var BHSIContractAddress = "0x4f7879fac25587ea87415919ff793585688ec86e";
@@ -13,6 +12,7 @@ var txFilterClaim = contractInstance.LOG_ClaimApplied();
 var Jayesh = "SomeString";
 var policyID = 0 ;
 var count = 0 ;
+var ClaimVoted = "No"
 
 function newRequest(ref_id , carrier , premium ) {
    ref_id = $("#ref_id").val();
@@ -31,7 +31,7 @@ console.log("Policy application ended");
 
 console.log("check Started") ;
 //contractInstance.status(AIGContractAddress, BHSIContractAddress,LICContractAddress , premium , {from: web3.eth.accounts[0] , gas :'900000'})
-contractInstance.status( premium , {from: web3.eth.accounts[0] , gas :'900000'});
+//contractInstance.status( premium , {from: web3.eth.accounts[0] , gas :'900000'});
 console.log("checkDone");
 
 alert("Your Policy ID is : " + contractInstance.policyId().c) ; 
@@ -83,21 +83,45 @@ function votePolicy(policyId, voterId){
 function voteClaim(claimId, voterId){
 	claimId = $('#claimId').val();
 	voterId = $('#voterId').text();
-	
-	console.log(voterId);
-	if(claimId != ""){
 
-		
-				console.log("Voting Started");
-				contractInstance.counterClaims(claimId , voterId, {from: web3.eth.accounts[0] , gas :'900000'});
-				alert("Voted Counted for Claim ID :  " + claimId )
-				console.log("Voting Ended");
-				// console.log(validation[0][policyId]);
-				// validation[0][policyId] = 1 ; 
-				// console.log(validation[0][policyId]);
-			
+	if($('#voterId').text() == "AIG") {
+			var voted = contractInstance.voteClaimInfo(claimId)[0].c ;
+			//console.log(voted) ;
+			if (voted != 1) ClaimVoted = "No" ;
+			else ClaimVoted = "Yes"
+		}; 
+		if($('#voterId').text() == "BHSI") {
+			var voted = contractInstance.voteClaimInfo(claimId)[1].c ;
+			//console.log(voted) ;
+			if (voted != 1) ClaimVoted = "No" ;
+			else ClaimVoted = "Yes"
+		};
+		if($('#voterId').text() == "LIC"){
+			var voted = contractInstance.voteClaimInfo(claimId)[2].c ;
+			//console.log(voted) ;
+			if (voted != 1) ClaimVoted = "No" ;
+			else ClaimVoted = "Yes"
+		} ;
+
+	if(ClaimVoted != "Yes") {
+	
+				console.log(voterId);
+				if(claimId != ""){
+
+					
+							console.log("Voting Started");
+							contractInstance.counterClaims(claimId , voterId, {from: web3.eth.accounts[0] , gas :'900000'});
+							alert("Voted Counted for Claim ID :  " + claimId )
+							console.log("Voting Ended");
+							// console.log(validation[0][policyId]);
+							// validation[0][policyId] = 1 ; 
+							// console.log(validation[0][policyId]);
+						
+				}
+				else alert("Empty Credentials");
 	}
-	else alert("Empty Credentials");
+
+	else alert("Already Voted");
 
 	location.reload();
 }
@@ -247,9 +271,9 @@ function tableupdate(){
 	var j = policies ;
 	for (var i = 0 ; i <= policies ; i++) {
 		//var j = 1 ;
-		var status = contractInstance.statusPolicy(i) ;
+		//var status = contractInstance.statusPolicy(i) ;
 		var ref_id = contractInstance.reference_id_policy(i) ;
-		var counts = contractInstance.counterPolicy(i).c ;
+		//var counts = contractInstance.counterPolicy(i).c ;
 		if($('#voterId').text() == "AIG") {
 			var voted = contractInstance.votePolicyInfo(i)[0].c ;
 			if (voted == 1) var votedS = "Yes" ;
@@ -287,17 +311,18 @@ function tableupdate(){
   //   	cell6.innerHTML = status;
 
   //   	j--;
-  if(status == "Policy approved" ) $('#someTable > tbody:last-child').prepend('<tr class="success" ><td>' + j + '</td><td>' + i + '</td><td>' + ref_id + '</td><td>' + premium + '</td><td>' + votedS +'</td><td>'+status+'</td></tr>') ;
-  else {
-  	if(votedS == "Yes"){ 
-	$('#someTable > tbody:last-child').prepend('<tr class = "info"><td>' + j + '</td><td>' + i + '</td><td>' + ref_id + '</td><td>' + premium + '</td><td>' + votedS +'</td><td>'+status+'</td></tr>') ;
-  	}
+ //  if(status == "Policy approved" ) $('#someTable > tbody:last-child').prepend('<tr class="success" ><td>' + j + '</td><td>' + i + '</td><td>' + ref_id + '</td><td>' + premium + '</td><td>' + votedS +'</td><td>'+status+'</td></tr>') ;
+ //  else {
+ //  	if(votedS == "Yes"){ 
+	// $('#someTable > tbody:last-child').prepend('<tr class = "info"><td>' + j + '</td><td>' + i + '</td><td>' + ref_id + '</td><td>' + premium + '</td><td>' + votedS +'</td><td>'+status+'</td></tr>') ;
+ //  	}
 
-  	else {
-  		$('#someTable > tbody:last-child').prepend('<tr class="danger" ><td>' + j + '</td><td>' + i + '</td><td>' + ref_id + '</td><td>' + premium + '</td><td>' + votedS +'</td><td>'+status+'</td></tr>') ;
-  	}
+ //  	else {
+ //  		$('#someTable > tbody:last-child').prepend('<tr class="danger" ><td>' + j + '</td><td>' + i + '</td><td>' + ref_id + '</td><td>' + premium + '</td><td>' + votedS +'</td><td>'+status+'</td></tr>') ;
+ //  	}
 
-  }	
+ //  }	
+ 	$('#someTable > tbody:last-child').prepend('<tr ><td>' + j + '</td><td>' + i + '</td><td>' + ref_id + '</td><td>' + premium + '</td></tr>') ;
 	j--;//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
 	location.reload();	//$('<div class = panel > <h2>'+  i + ' </h2 > <br> <h4>' + status + '</h4></div >').appendTo('.test');
 	}
@@ -318,20 +343,20 @@ function tableupdateclaim(){
 		if($('#voterId').text() == "AIG") {
 			var voted = contractInstance.voteClaimInfo(i)[0].c ;
 			console.log(voted) ;
-			if (voted == 1) var votedSC = "Yes" ;
-			else var votedSC = "No"
+			if (voted == 1) ClaimVoted = "Yes" ;
+			else ClaimVoted = "No"
 		}; 
 		if($('#voterId').text() == "BHSI") {
 			var voted = contractInstance.voteClaimInfo(i)[1].c ;
 			console.log(voted) ;
-			if (voted == 1) var votedSC = "Yes" ;
-			else var votedSC = "No"
+			if (voted == 1) ClaimVoted = "Yes" ;
+			else ClaimVoted = "No"
 		};
 		if($('#voterId').text() == "LIC"){
 			var voted = contractInstance.voteClaimInfo(i)[2].c ;
 			console.log(voted) ;
-			if (voted == 1) var votedSC = "Yes" ;
-			else var votedSC = "No"
+			if (voted == 1) ClaimVoted = "Yes" ;
+			else ClaimVoted = "No"
 		} ;
 		//console.log("Status of polciy id " + i + " is : " + status); 
 
@@ -350,10 +375,10 @@ function tableupdateclaim(){
   //   	cell6.innerHTML = status;
   //   	j--;
 
- if(status == "Claim approved") $('#claimTable > tbody:last-child').prepend('<tr class="success" ><td>' + k + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + votedSC +'</td><td>'+status+'</td></tr>') ;
+ if(status == "Claim approved") $('#claimTable > tbody:last-child').prepend('<tr class="success" ><td>' + k + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + ClaimVoted +'</td><td>'+status+'</td></tr>') ;
   else {
-  if(votedSC = "Yes") $('#claimTable > tbody:last-child').prepend('<tr class = "info"><td>' + k + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + votedSC +'</td><td>'+status+'</td></tr>') ;		//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
-  else $('#claimTable > tbody:last-child').prepend('<tr class = "danger"><td>' + k + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + votedSC +'</td><td>'+status+'</td></tr>') ;
+  if(ClaimVoted == "Yes") $('#claimTable > tbody:last-child').prepend('<tr class = "info"><td>' + k + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + ClaimVoted +'</td><td>'+status+'</td></tr>') ;		//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
+  else $('#claimTable > tbody:last-child').prepend('<tr class = "danger"><td>' + k + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + ClaimVoted +'</td><td>'+status+'</td></tr>') ;
 
 }	k-- ;	//$('<div class = panel > <h2>'+  i + ' </h2 > <br> <h4>' + status + '</h4></div >').appendTo('.test');
 	location.reload();}
@@ -368,17 +393,17 @@ function login(loginId){
     return false; 
 	}
 
-    if(loginId == "AIG"){
+    if(loginId == "Insurer"){
     window.location.href = 'index_AIG.html';
     return false; 
 	}
 
-	if(loginId == "BHSI"){
+	if(loginId == "Reinsurer1"){
     window.location.href = 'index_BHSI.html';
     return false; 
 	}
 
-	if(loginId == "LIC"){
+	if(loginId == "Reinsurer2"){
     window.location.href = 'index_LIC.html';
     return false; 
 	}
@@ -398,9 +423,9 @@ $(document).ready(function(){
 	var j = policies ;
 	for (var i = 0 ; i <= policies ; i++) {
 		//var j = 1 ;
-		var status = contractInstance.statusPolicy(i) ;
+		//var status = contractInstance.statusPolicy(i) ;
 		var ref_id = contractInstance.reference_id_policy(i) ;
-		var counts = contractInstance.counterPolicy(i).c ;
+		//var counts = contractInstance.counterPolicy(i).c ;
 		if($('#voterId').text() == "AIG") {
 			var voted = contractInstance.votePolicyInfo(i)[0].c ;
 			if (voted == 1) var votedS = "Yes" ;
@@ -438,23 +463,26 @@ $(document).ready(function(){
   //   	cell6.innerHTML = status;
 
   //   	j--;
-  if(status == "Policy approved" ) $('#someTable > tbody:last-child').prepend('<tr class="success" ><td>' + j + '</td><td>' + i + '</td><td>' + ref_id + '</td><td>' + premium + '</td><td>' + votedS +'</td><td>'+status+'</td></tr>') ;
-  else {
-  	if(votedS == "Yes"){ 
-	$('#someTable > tbody:last-child').prepend('<tr class = "info"><td>' + j + '</td><td>' + i + '</td><td>' + ref_id + '</td><td>' + premium + '</td><td>' + votedS +'</td><td>'+status+'</td></tr>') ;
-  	}
+ //  if(status == "Policy approved" ) $('#someTable > tbody:last-child').prepend('<tr class="success" ><td>' + j + '</td><td>' + i + '</td><td>' + ref_id + '</td><td>' + premium + '</td><td>' + votedS +'</td><td>'+status+'</td></tr>') ;
+ //  else {
+ //  	if(votedS == "Yes"){ 
+	// $('#someTable > tbody:last-child').prepend('<tr class = "info"><td>' + j + '</td><td>' + i + '</td><td>' + ref_id + '</td><td>' + premium + '</td><td>' + votedS +'</td><td>'+status+'</td></tr>') ;
+ //  	}
 
-  	else {
-  		$('#someTable > tbody:last-child').prepend('<tr class="danger" ><td>' + j + '</td><td>' + i + '</td><td>' + ref_id + '</td><td>' + premium + '</td><td>' + votedS +'</td><td>'+status+'</td></tr>') ;
-  	}
+ //  	else {
+ //  		$('#someTable > tbody:last-child').prepend('<tr class="danger" ><td>' + j + '</td><td>' + i + '</td><td>' + ref_id + '</td><td>' + premium + '</td><td>' + votedS +'</td><td>'+status+'</td></tr>') ;
+ //  	}
 
-  }	j--		//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
+ //  }	
+ 	$('#someTable > tbody:last-child').prepend('<tr ><td>' + j + '</td><td>' + i + '</td><td>' + ref_id + '</td><td>' + premium + '</td></tr>') ;
+	j--;		//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
 		//$('<div class = panel > <h2>'+  i + ' </h2 > <br> <h4>' + status + '</h4></div >').appendTo('.test');
 	}
-
+	
 	var claims = contractInstance.claimId();
 	var table = document.getElementById("claimTable");
 	var k = claims ;
+
 	for (var i = 0 ; i <= claims ; i++) {
 		//var j = 1 ;
 		var status = contractInstance.statusClaim(i) ;
@@ -464,20 +492,20 @@ $(document).ready(function(){
 		if($('#voterId').text() == "AIG") {
 			var voted = contractInstance.voteClaimInfo(i)[0].c ;
 			//console.log(voted) ;
-			if (voted == 1) var votedSC = "Yes" ;
-			else var votedSC = "No"
+			if (voted != 1) ClaimVoted = "No" ;
+			else ClaimVoted = "Yes"
 		}; 
 		if($('#voterId').text() == "BHSI") {
 			var voted = contractInstance.voteClaimInfo(i)[1].c ;
 			//console.log(voted) ;
-			if (voted == 1) var votedSC = "Yes" ;
-			else var votedSC = "No"
+			if (voted != 1) ClaimVoted = "No" ;
+			else ClaimVoted = "Yes"
 		};
 		if($('#voterId').text() == "LIC"){
 			var voted = contractInstance.voteClaimInfo(i)[2].c ;
 			//console.log(voted) ;
-			if (voted == 1) var votedSC = "Yes" ;
-			else var votedSC = "No"
+			if (voted != 1) ClaimVoted = "No" ;
+			else ClaimVoted = "Yes"
 		} ;
 		//console.log("Status of polciy id " + i + " is : " + status); 
 
@@ -495,13 +523,16 @@ $(document).ready(function(){
   //   	cell5.innerHTML = votedS;
   //   	cell6.innerHTML = status;
   //   	j--;
-  console.log(web3.eth.getBlock(31 ));
- if(status == "Claim approved") $('#claimTable > tbody:last-child').prepend('<tr class="success" ><td>' + k + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + votedSC +'</td><td>'+status+'</td></tr>') ;
+  //console.log(web3.eth.getBlock(31 ));
+  //console.log($('#voterId').text())
+ if(status == "Claim approved") $('#claimTable > tbody:last-child').prepend('<tr class="success" ><td>' + k + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + ClaimVoted +'</td><td>'+status+'</td></tr>') ;
   else {
-  if(votedSC = "Yes") $('#claimTable > tbody:last-child').prepend('<tr class = "info"><td>' + k + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + votedSC +'</td><td>'+status+'</td></tr>') ;		//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
-  else $('#claimTable > tbody:last-child').prepend('<tr class = "danger"><td>' + k + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + votedSC +'</td><td>'+status+'</td></tr>') ;
+  if(ClaimVoted == "Yes") $('#claimTable > tbody:last-child').prepend('<tr class = "info"><td>' + k + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + ClaimVoted +'</td><td>'+status+'</td></tr>') ;		//$('<tbody><tr><td>'+  j + "</td><td>" + i +"</td><td>" + "Same"  + "</td><td>" + status + "</td></tr></tbody>").appendTo('.tablesome');
+  else $('#claimTable > tbody:last-child').prepend('<tr class = "danger"><td>' + k + '</td><td>' + i + '</td><td>' + id + '</td><td>' + ref_id + '</td><td>' + ClaimVoted +'</td><td>'+status+'</td></tr>') ;
 
-}	k-- ;	//$('<div class = panel > <h2>'+  i + ' </h2 > <br> <h4>' + status + '</h4></div >').appendTo('.test');
+}	
+
+k-- ;	//$('<div class = panel > <h2>'+  i + ' </h2 > <br> <h4>' + status + '</h4></div >').appendTo('.test');
 	}
 
 })
